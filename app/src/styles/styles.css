@@ -1,0 +1,278 @@
+:root {
+  /* --------- COLORES DE MARCA --------- */
+  --brand-blue-700: #00b1f2; /* Azul oscuro primario */
+  --brand-blue-500: #00c2f2; /* Azul claro secundario */
+  --brand-orange-700: #ff9900; /* Naranja oscuro primario */
+  --brand-orange-500: #ffad0a; /* Naranja claro secundario */
+
+  /* --------- NEUTRALES - PALETA INDUSTRIAL --------- */
+  --bg: #e9ecef; /* Fondo principal */
+  --surface-1: #f5f7f9; /* Tarjetas, paneles */
+  --surface-2: #dde2e6; /* Incrustados y tiles */
+  --surface-3: #c5ccd3; /* Bordes, divisiones */
+  --surface-4: #a6afb7; /* Resaltado de borde/acero */
+  --ink: #1a1f24; /* Texto principal + fondo logo */
+  --ink-2: #3f4750; /* Texto secundario */
+  --ink-3: #6b747d; /* Texto terciario/metadata */
+
+  /* --------- COLORES SEMANTICOS --------- */
+  --primary: var(--brand-blue-700);
+  --accent: var(--brand-orange-700);
+  --info: var(--brand-blue-700);
+  --success: #3fa34d;
+  --caution: var(--brand-orange-500);
+  --danger: #e54b4b;
+
+  /* PRIMER PLANO/FONDOS EMPAREJADOS */
+  --fg-1: var(--ink);
+  --fg-2: var(--ink-2);
+  --fg-3: var(--ink-3);
+  --fg-on-blue: #ffffff;
+  --fg-on-orange: var(--ink);
+
+  /* --------- TIPOGRAFIA --------- */
+  --font-display: "Barlow", system-ui, sans-serif;
+  --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono:
+    "Cascadia Mono", "Cascadia Code", "IBM Plex Mono", ui-monospace, monospace;
+  --font-pixel: "Press Start 2P", "VT323", monospace;
+  --font-crt: "VT323", "Cascadia Mono", "IBM Plex Mono", monospace;
+
+  /* --------- TAMAÑOS TIPOGRAFIA (Tamaño|size / Interlineado|line-height / Espaciado entre letras|tracking) --------- */
+  --fs-display-xl: 64px;
+  --lh-display-xl: 1.05;
+  --tr-display-xl: -0.02em;
+
+  --fs-display-lg: 44px;
+  --lh-display-lg: 1.1;
+  --tr-display-lg: -0.015em;
+
+  --fs-display: 32px;
+  --lh-display: 1.15;
+  --tr-display: -0.01em;
+
+  --fs-h1: 28px;
+  --lh-h1: 1.25;
+
+  --fs-h2: 22px;
+  --lh-h2: 1.3;
+
+  --fs-h3: 18px;
+  --lh-h3: 1.35;
+
+  --fs-body: 16px;
+  --lh-body: 1.55;
+
+  --fs-small: 14px;
+  --lh-small: 1.45;
+
+  --fs-micro: 11px;
+  --lh-micro: 1.35;
+  --tr-micro: 0.12em;
+
+  --fs-code: 14px;
+  --lh-code: 1.5;
+
+  /* --------- ESPACIADO (4px base) --------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px; /* Un tile */
+  --space-5: 24px;
+  --space-6: 32px; /* Dos tiles */
+  --space-7: 48px; /* Tres tiles */
+  --space-8: 64px; /* Cuatro tiles */
+  --space-9: 96px;
+  --space-10: 128px;
+
+  /* --------- RADIO (esquinas) --------- */
+  --radius-0: 0px;
+  --radius-1: 2px;
+  --radius-2: 4px;
+
+  /* --------- BORDES --------- */
+  --border-soft: 1px solid var(--surface-3);
+  --border-emphatic: 2px solid var(--ink);
+  --border-dashed: 1px dashed var(--brand-orange-700);
+
+  /* --------- SOMBRAS (industrial, no suave) --------- */
+  --shadow-recess: inset 0 -1px 0 var(--surface-3);
+  --shadow-label: 4px 4px 0 var(--ink);
+  --shadow-label-blue: 4px 4px 0 var(--brand-blue-700);
+  --shadow-label-orange: 4px 4px 0 var(--brand-orange-700);
+
+  /* --------- MOVIMIENTO --------- */
+  --easing-clinical: cubic-bezier(0.2, 0, 0, 1);
+  --dur-micro: 120ms;
+  --dur-base: 240ms;
+  --dur-env: 480ms;
+
+  /* --------- LAYOUT --------- */
+  --content-max: 1200px;
+  --header-h: 64px;
+  --sidebar-w: 240px;
+  --tile: 64px;
+
+  /* --------- FONDO --------- */
+  --tile-line: rgba(28, 32, 38, 0.03);
+}
+
+/* --------- Animaciones --------- */
+@keyframes blink {
+  50% {
+    opacity: 0.4;
+  }
+}
+
+/* --------- Elementos por defecto --------- */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+}
+
+h1,
+.h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-h1);
+  line-height: var(--lh-h1);
+  color: var(--ink);
+  margin: 0;
+}
+
+h2,
+.h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-h2);
+  line-height: var(--lh-h2);
+  margin: 0;
+}
+
+h3,
+.h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-h3);
+  line-height: var(--lh-h3);
+  margin: 0;
+}
+
+.display,
+.display-lg,
+.display-xl {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: var(--tr-display);
+}
+
+.display {
+  font-size: var(--fs-display);
+  line-height: var(--lh-display);
+}
+
+.display-lg {
+  font-size: var(--fs-display-lg);
+  line-height: var(--lh-display-lg);
+  letter-spacing: var(--tr-display-lg);
+}
+
+.display-xl {
+  font-size: var(--fs-display-xl);
+  line-height: var(--lh-display-xl);
+  letter-spacing: var(--tr-display-xl);
+}
+
+p,
+.body {
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--ink-2);
+}
+
+.small {
+  font-size: var(--fs-small);
+  line-height: var(--lh-small);
+}
+
+.micro,
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  line-height: var(--lh-micro);
+  letter-spacing: var(--tr-micro);
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+code,
+pre,
+.code {
+  font-family: var(--font-mono);
+  font-size: var(--fs-code);
+  line-height: var(--lh-code);
+  color: var(--ink);
+}
+
+/* ---------- Utilitarios ---------- */
+.bg-tile-grid {
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(var(--tile-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--tile-line) 1px, transparent 1px);
+  background-size:
+    var(--tile) var(--tile),
+    var(--tile) var(--tile),
+    var(--tile) var(--tile);
+  background-position:
+    0 0,
+    0 0,
+    0 0;
+}
+
+.pills {
+  background: var(--surface-1);
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  color: var(--ink);
+  font-weight: 600;
+  line-height: unset;
+
+  border: 1px solid var(--ink);
+  padding: var(--space-1) var(--space-2);
+}
+
+.hazard-stripes {
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--brand-orange-700) 0 12px,
+    var(--ink) 12px 24px
+  );
+}
+
+.pixelated {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.orange {
+  color: var(--brand-orange-700);
+}
+.blue {
+  color: var(--brand-blue-700);
+}
+.ink {
+  color: var(--surface-1);
+}

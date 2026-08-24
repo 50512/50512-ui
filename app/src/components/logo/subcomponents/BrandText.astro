@@ -1,0 +1,42 @@
+---
+import '../../../styles/fonts.css';
+import '../../../styles/styles.css';
+interface Props {
+  class?: string,
+}
+const {
+  class: className,
+} = Astro.props;
+---
+<div class:list={["brand", className]}>
+  <span class="blue">5</span>
+  <span class="orange">0</span>
+  <span class="blue">5</span>
+  <span class="orange">12</span>
+  <span class="orange">.</span>
+  <span class="ink">dev</span>
+</div>
+
+<style>
+  .brand {
+    font-size: var(--fs-display-lg);
+    font-weight: 600;
+    line-height: var(--lh-display-lg);
+    letter-spacing: var(--tr-display-lg);
+    margin: 0;
+    word-break: keep-all;
+  }
+
+  .portrait-brand {
+    font-size: clamp(var(--fs-h1), 14cqw, var(--fs-display-xl));
+    display: block;
+    margin: var(--space-1) 0;
+  }
+
+  .square-brand {
+    text-align: center;
+    font-size: var(--fs-display);
+    letter-spacing: var(--tr-display);
+    line-height: var(--lh-display);
+  }
+</style>

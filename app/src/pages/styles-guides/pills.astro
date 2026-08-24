@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { StatusPill, TagPill } from "../../components/pills";
+---
+<BaseLayout title="Capsulas">
+  <div class="pills-wrapper">
+    <h1>Capsulas</h1>
+    <h2>Capsulas de estado</h2>
+    <div class="section-pill">
+      <StatusPill variant="operative"/>
+      <StatusPill variant="trial"/>
+      <StatusPill variant="offline"/>
+      <StatusPill variant="operative" label="CUSTOM LABEL"/>
+    </div>
+    <h2>Capsulas de etiqueta</h2>
+    <div class="section-pill">
+      <TagPill variant="primary">primary</TagPill>
+      <TagPill variant="accent">accent</TagPill>
+      <TagPill variant="dark">dark</TagPill>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .pills-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: var(--surface-1);
+    padding: var(--space-4) var(--space-4);
+    gap: var(--space-2);
+  }
+
+  .section-pill {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: var(--space-2);
+  }
+</style>

@@ -1,0 +1,78 @@
+---
+import '../../styles/fonts.css';
+import '../../styles/styles.css';
+import TermFrame from './subcomponents/TermFrame.astro';
+import TermBody from './subcomponents/TermBody.astro';
+import BrandText from './subcomponents/BrandText.astro';
+interface Props {
+  // Texto despues de `//`
+  tag?: string;
+
+  // Prompt `whoami`
+  showPrompt?: boolean;
+  
+  // Texto esquina inferior derecha
+  showMeta?: boolean;
+
+  // Texto de estado superior derecho
+  showStatus?: boolean;
+
+  // Clases
+  class?: string;
+}
+
+const {
+  tag = "developer",
+  showPrompt = true,
+  showMeta = true,
+  showStatus = true,
+  class: className,
+} = Astro.props;
+---
+<TermFrame class:list={[className]} showStatus={showStatus}>
+  <TermBody class="small portrait-body">
+    {
+      showPrompt && (
+        <div class="prompt-row">
+          <span class="dim">~</span> <span class="orange">$</span> whoami
+        </div>
+      )
+    }
+
+    <BrandText class="portrait-brand"/>
+
+    {
+      showMeta && (
+        <div class="meta micro">
+          <span class="tag">// {tag}</span>
+          <span class="v">v5.05.12</span>
+        </div>
+      )
+    }
+  </TermBody>
+</TermFrame>
+
+<style>
+  .dim .v {
+    color: var(--ink-3);
+  }
+
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: var(--space-1);
+    margin-top: var(--space-1);
+    color: var(--ink-3);
+  }
+  @container (max-width: 280px) {
+    .prompt-row,
+    .meta {
+      display: none;
+    }
+    .brand {
+      margin: 0;
+      text-align: center;
+    }
+  }
+</style>

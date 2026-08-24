@@ -1,0 +1,25 @@
+---
+import '../../../styles/fonts.css';
+import '../../../styles/styles.css';
+---
+<div class="status micro">
+  <span class="status-dot" />
+  READY
+</div>
+
+<style>
+  .status {
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    color: var(--ink-3);
+    gap: var(--space-1);
+  }
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--brand-orange-700);
+    box-shadow: 0 0 6px var(--brand-orange-700);
+  }
+</style>

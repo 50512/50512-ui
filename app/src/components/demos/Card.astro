@@ -1,0 +1,39 @@
+---
+interface Props {
+  class?: string;
+}
+
+const {
+  class: className
+} = Astro.props
+---
+<div class:list={["card", className]}>
+</div>
+
+<style>
+  .card {
+    background-color: var(--surface-1);
+    width: 100px;
+    height: 60px;
+  }
+
+  .recess {
+    box-shadow: var(--shadow-recess);
+  }
+
+  .label {
+    box-shadow: var(--shadow-label);
+  }
+
+  .label-blue {
+    box-shadow: var(--shadow-label-blue);
+  }
+
+  .label-orange {
+    box-shadow: var(--shadow-label-orange);
+  }
+
+  .border {
+    border: var(--border-soft);
+  }
+</style>

@@ -1,0 +1,79 @@
+---
+import "../styles/fonts.css"
+import "../styles/styles.css"
+
+interface Props {
+  type?: "submit"|"reset"|"button";
+  variant?: "primary"|"accent"|"ghost";
+  noUppercase?: boolean,
+  disabled?: boolean;
+  class?: string;
+}
+
+const {
+  type = "button",
+  variant = "primary",
+  noUppercase = false,
+  disabled = false,
+  class: className,
+} = Astro.props
+---
+<button
+  type={type}
+  class:list={["btn", `btn-${variant}`, "micro", className]}
+  disabled={disabled}
+  style={noUppercase && ("text-transform: none; letter-spacing: unset;")}
+>
+  <slot />
+</button>
+
+<style>
+  .btn {
+    font-weight: 700;
+    color: var(--ink);
+    
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    border: var(--border-emphatic);
+    cursor: pointer;
+
+    transition:
+      transform var(--dur-micro) var(--easing-clinical),
+      box-shadow var(--dur-micro) var(--easing-clinical);
+  }
+
+  .btn:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 5px 5px 0 var(--ink);
+  }
+
+  .btn:disabled {
+    pointer-events: none;
+    background: var(--surface-2);
+    color: var(--ink-3);
+    border-color: var(--ink-3);
+    box-shadow: none;
+  }
+
+  .btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--ink);
+  }
+
+  .btn-primary {
+    background: var(--primary);
+    color: var(--fg-on-blue);
+    box-shadow: var(--shadow-label);
+  }
+
+  .btn-accent {
+    background: var(--accent);
+    box-shadow: var(--shadow-label);
+  }
+
+  .btn-ghost {
+    background: var(--surface-1);
+  }
+</style>

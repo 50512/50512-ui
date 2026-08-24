@@ -1,0 +1,72 @@
+{
+  "banner": {
+    "width": 402,
+    "height": 112,
+    "barHeight": 28,
+    "brand": {
+      "x": 25,
+      "y": 46,
+      "width": 226.09125,
+      "height": 48.400000000000006
+    }
+  },
+  "portrait": {
+    "width": 520,
+    "height": 185,
+    "barHeight": 28,
+    "brand": {
+      "x": 25,
+      "y": 70.3,
+      "width": 470,
+      "height": 70.4
+    }
+  },
+  "square": {
+    "width": 200,
+    "height": 200,
+    "barHeight": 28,
+    "brand": {
+      "x": 17.064999999999998,
+      "y": 96.1,
+      "width": 165.87,
+      "height": 36.8
+    }
+  },
+  "square-status": {
+    "width": 200,
+    "height": 200,
+    "barHeight": 28,
+    "brand": {
+      "x": 17.064999999999998,
+      "y": 96.1,
+      "width": 165.87,
+      "height": 36.8
+    }
+  },
+  "small": {
+    "width": 216,
+    "height": 116,
+    "barHeight": 28,
+    "brand": {
+      "x": 25.064999999999998,
+      "y": 54.1,
+      "width": 165.87,
+      "height": 36.8
+    }
+  },
+  "small-status": {
+    "width": 216,
+    "height": 116,
+    "barHeight": 28,
+    "brand": {
+      "x": 25.064999999999998,
+      "y": 54.1,
+      "width": 165.87,
+      "height": 36.8
+    }
+  },
+  "mark": {
+    "width": 256,
+    "height": 256
+  }
+}

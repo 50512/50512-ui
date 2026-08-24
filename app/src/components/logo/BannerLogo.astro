@@ -1,0 +1,47 @@
+---
+import '../../styles/fonts.css';
+import '../../styles/styles.css';
+import TermFrame from './subcomponents/TermFrame.astro';
+import TermBody from './subcomponents/TermBody.astro';
+import BrandText from './subcomponents/BrandText.astro';
+interface Props {
+  // Texto despues de `//`
+  tag?: string;
+  role?: string;
+
+  // Texto de estado superior derecho
+  showStatus?: boolean;
+
+  // Clases
+  class?: string;
+}
+
+const {
+  tag = "developer",
+  role = "engineer",
+  showStatus = true,
+  class: className,
+} = Astro.props;
+---
+
+<TermFrame class:list={[className]} showStatus={showStatus}>
+  <TermBody class='small'>
+    <BrandText />
+    <div class="side micro">
+      <span>// {tag}</span>
+      <span>// {role}</span>
+    </div>
+  </TermBody>
+</TermFrame>
+
+<style>
+  .side {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+    gap: var(--space-1);
+    color: var(--ink-3);
+    padding-left: var(--space-4);
+  }
+</style>

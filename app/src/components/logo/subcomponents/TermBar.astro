@@ -1,0 +1,33 @@
+---
+import '../../../styles/fonts.css';
+import '../../../styles/styles.css';
+import ThreeDots from './ThreeDots.astro';
+import StatusMsg from './StatusMsg.astro';
+interface Props {
+  // Texto de estado superior derecho
+  showStatus?: boolean;
+}
+
+const {
+  showStatus = true,
+} = Astro.props;
+---
+<div class="term-bar">
+  <ThreeDots />
+  {
+    showStatus && (
+      <StatusMsg />
+    )
+  }
+</div>
+
+<style>
+  .term-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-2) var(--space-3);
+    border-bottom: var(--term-border);
+    flex-shrink: 0;
+  }
+</style>

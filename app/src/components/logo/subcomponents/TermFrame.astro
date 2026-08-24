@@ -1,0 +1,60 @@
+---
+import '../../../styles/fonts.css';
+import '../../../styles/styles.css';
+import TermBar from './TermBar.astro';
+interface Props {
+  // Texto de estado superior derecho
+  showStatus?: boolean;
+
+  // Escala para el logo cuadrado
+  squareScale?: number;
+
+  // Clases
+  class?: string;
+}
+
+const {
+  showStatus = true,
+  squareScale = 1,
+  class: className,
+} = Astro.props;
+---
+
+<div class:list={["term", className]}>
+  <div class="term-bar">
+    <TermBar showStatus={showStatus} />
+  </div>
+
+  <slot />
+</div>
+
+<style define:vars={{ "square-scale": squareScale}}>
+  .term {
+    --text-color: var(--surface-1);
+    --term-border: 1px solid var(--ink-2);
+
+    display: flex;
+    flex-direction: column;
+    container-type: inline-size;
+    background: var(--fg-1);
+    border: var(--term-border);
+    border-radius: var(--radius-2);
+    font-family: var(--font-mono);
+    color: var(--text-color);
+    overflow: hidden;
+  }
+
+  .square-frame {
+    --size: 200px;
+    height: var(--size);
+    width: var(--size);
+    flex-shrink: 0;
+    aspect-ratio: 1/1;
+    transform: scale(var(--square-scale));
+  }
+
+  .small-frame {
+    container-type: unset;
+    height: fit-content;
+  }
+</style>

@@ -1,0 +1,89 @@
+---
+import "../styles/fonts.css"
+import "../styles/styles.css"
+import { STATUS_BAR_CONFIG, type StatusBarType } from "../utils/statusBarConfig";
+
+const now = new Date();
+const year = now.getUTCFullYear();
+const month = String(now.getUTCMonth() + 1).padStart(2, "0");
+const day = String(now.getUTCDate()).padStart(2, "0");
+
+const buildTag = `BUILD ${year}.${month}.${day}-A`;
+
+interface Props {
+  variant?: StatusBarType;
+  label?: string;
+}
+
+const {
+  variant = "operational",
+  label,
+} = Astro.props;
+---
+<div class="status-bar micro">
+  <span class:list={["status-dot", STATUS_BAR_CONFIG[variant].dot_color ]}></span>
+  <span>{STATUS_BAR_CONFIG[variant].status_text}</span>
+  <span class="separator">·</span>
+  <span>{buildTag}</span>
+  <span style="flex:1;"></span>
+  <span class="clock" id="clock">UTC --:--:--</span>
+</div>
+
+<script>
+  let clockInterval: number | undefined;
+
+  function updateClock() {
+    const utcClock = document.getElementById("clock");
+    if (!utcClock) return;
+
+    const render = () => {
+      const now = new Date();
+      const hours = String(now.getUTCHours()).padStart(2, '0');
+      const minutes = String(now.getUTCMinutes()).padStart(2, '0');
+      const seconds = String(now.getUTCSeconds()).padStart(2, '0');
+      
+      utcClock.textContent = `UTC ${hours}:${minutes}:${seconds}`;
+    }
+
+    render();
+    clearInterval(clockInterval);
+    clockInterval = window.setInterval(render, 1000);
+  }
+
+  document.addEventListener("astro:page-load", updateClock);
+</script>
+
+<style>
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    animation: blink 1.6s steps(2) infinite;
+  }
+
+  .green-dot {
+    background: var(--success);
+  }
+  .red-dot {
+    background: var(--danger);
+  }
+  .orange-dot {
+    background: var(--brand-orange-500);
+  }
+
+  .status-bar {
+    display: flex;
+    gap: var(--space-4);
+    width: 100%;
+    background: var(--ink);
+    align-items: center;
+    padding: var(--space-2) var(--space-3);
+    color: var(--surface-1);
+    line-height: unset;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .separator {
+    color: var(--ink-3);
+  }
+</style>

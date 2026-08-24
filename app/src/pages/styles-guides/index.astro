@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import LabButton from "../../components/LabButton.astro";
+import { SquareLogo } from "../../components/logo";
+import { StatusPill, TagPill } from "../../components/pills";
+---
+<BaseLayout title="Guías de estilos">
+  <h1>Guías de estilos</h1>
+  <p>
+    Estas guías de estilos muestran los elementos base y normativas de estilo que se seguirán en el proyecto
+  </p>
+  <div class="container">
+    <a href="logos/">
+      <SquareLogo />
+    </a>
+    <a href="shadows/">
+      <div class="card">
+        <p>Sombras</p>
+      </div>
+    </a>
+    <a href="buttons/">
+      <LabButton>
+        Botones
+      </LabButton>
+    </a>
+    <a href="pills/">
+      <StatusPill variant="trial" label="píldoras" />
+    </a>
+    <a href="status-bar/">
+      <TagPill variant="dark">Barra de estado</TagPill>
+    </a>
+  </div>
+</BaseLayout>
+<style>
+  .container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background: var(--surface-1);
+    width: 100%;
+    padding: var(--space-4) var(--space-3);
+    gap: var(--space-4);
+    align-items: center;
+
+  }
+  .card {
+    width: 150px;
+    height: 100px;
+    background: var(--surface-1);
+    border: var(--border-soft);
+    box-shadow: var(--shadow-label);
+    align-content: center;
+    transition:
+      transform var(--dur-micro) var(--easing-clinical),
+      box-shadow var(--dur-micro) var(--easing-clinical);
+
+    p {
+      margin: 0;
+      text-align: center;
+    }
+  }
+  .card:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 5px 5px 0 var(--ink);
+  }
+  a:active > .card {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--ink);
+  }
+  a {
+    text-decoration: none;
+  }
+</style>

@@ -1,0 +1,43 @@
+---
+import "../../styles/fonts.css"
+import "../../styles/styles.css"
+
+interface Props {
+  variant?: "primary" | "accent" | "dark",
+  noUppercase?: boolean,
+  label?: string,
+  class?: string;
+}
+
+const {
+  variant = "primary",
+  noUppercase = false,
+  class: className,
+} = Astro.props
+---
+<span
+  class:list={["pills", "micro", `${variant}-pill`, className]}
+  style={noUppercase && ("text-transform: none; letter-spacing: unset;")}
+>
+  <slot />
+</span>
+
+<style>
+  .primary-pill {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--fg-on-blue);
+  }
+
+  .accent-pill {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--ink);
+  }
+
+  .dark-pill {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--fg-on-blue);
+  }
+</style>

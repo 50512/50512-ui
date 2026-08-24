@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro"
+import Card from "../../components/demos/Card.astro"
+---
+<BaseLayout title="Sombras solidas">
+
+  <h1>Sombras solidas</h1>
+
+  <div class="card-container" style="border-bottom: 0;">
+    <Card class="recess"/>
+    <Card class="label"/>
+    <Card class="label-blue"/>
+    <Card class="label-orange"/>
+    <p>Cartas sin borde</p>
+  </div>
+
+  <div class="card-container">
+    <Card class="recess border"/>
+    <Card class="label border"/>
+    <Card class="label-blue border"/>
+    <Card class="label-orange border"/>
+    <p>Cartas con borde</p>
+  </div>
+</BaseLayout>
+
+<style>
+  h1 {
+    margin-left: var(--space-5);
+    background-color: var(--surface-1);
+  }
+  .card-container {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-4);
+    width: 100%;
+    background-color: var(--bg);
+    border: var(--border-soft);
+    padding: var(--space-3) var(--space-5);
+  }
+</style>

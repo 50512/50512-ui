@@ -1,0 +1,34 @@
+---
+import '../../styles/fonts.css';
+import '../../styles/styles.css';
+import TermFrame from './subcomponents/TermFrame.astro';
+import TermBody from './subcomponents/TermBody.astro';
+import BrandText from './subcomponents/BrandText.astro';
+interface Props {
+  // Mensaje de estado esquina superior derecha
+  showStatus?: boolean;
+
+  // Escala del cuadrado
+  squareScale?: number;
+
+  // Clases
+  class?: string;
+}
+
+const {
+  squareScale = 1.0,
+  showStatus = false,
+  class: className,
+} = Astro.props;
+---
+
+<TermFrame
+  class:list={["small-frame", className]}
+  showStatus={showStatus}
+  squareScale={squareScale}
+>
+  <TermBody class="square-body small">
+    <BrandText class="square-brand"/>
+
+  </TermBody>
+</TermFrame>
