@@ -31,15 +31,18 @@ const {
   noUppercase = false,
   label,
   class: className,
-} = Astro.props
-const currentConfigVariant = configVariants[variant]
+} = Astro.props;
+
+const currentConfigVariant = configVariants[variant];
+const dotColor = currentConfigVariant.dot_color;
+const labelToShow = label || currentConfigVariant.pill_text;
 ---
 <span
   class:list={["pills", "micro", className]}
   style={noUppercase && ("text-transform: none; letter-spacing: unset;")}
 >
-  <span class:list={["dot", currentConfigVariant.dot_color]}></span>
-  {label?label:currentConfigVariant.pill_text}
+  <span class:list={["dot", dotColor]}></span>
+  {labelToShow}
 </span>
 
 <style>

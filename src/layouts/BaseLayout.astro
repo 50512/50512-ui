@@ -3,12 +3,17 @@ import '../styles/fonts.css';
 import '../styles/styles.css';
 import { ClientRouter } from 'astro:transitions';
 import StatusBar from '../components/StatusBar.astro';
+import { type StatusKeysType } from '../utils/statusPagesConfig';
 interface Props {
   title: string;
+  status?: StatusKeysType;
+  barLabel?: string;
 }
 
 const {
   title,
+  status = "operational",
+  barLabel,
 } = Astro.props;
 ---
 <!DOCTYPE html>
@@ -25,7 +30,7 @@ const {
 </head>
 <body>
   <div class="page">
-    <StatusBar transition:persist="status-bar"/>
+    <StatusBar transition:persist="status-bar" variant={status} label={barLabel}/>
     <main>
       <div class="wrapper">
         <slot />

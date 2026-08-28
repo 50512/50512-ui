@@ -1,7 +1,7 @@
 ---
 import "../styles/fonts.css"
 import "../styles/styles.css"
-import { STATUS_BAR_CONFIG, type StatusBarType } from "../utils/statusBarConfig";
+import { STATUS_COMPONENTS_CONFIG, type StatusKeysType } from "../utils/statusPagesConfig";
 
 const now = new Date();
 const year = now.getUTCFullYear();
@@ -11,7 +11,7 @@ const day = String(now.getUTCDate()).padStart(2, "0");
 const buildTag = `BUILD ${year}.${month}.${day}-A`;
 
 interface Props {
-  variant?: StatusBarType;
+  variant?: StatusKeysType;
   label?: string;
 }
 
@@ -19,10 +19,13 @@ const {
   variant = "operational",
   label,
 } = Astro.props;
+
+const labelToShow = label || STATUS_COMPONENTS_CONFIG[variant].status_text;
+const dotColor = STATUS_COMPONENTS_CONFIG[variant].dot_color;
 ---
 <div class="status-bar micro">
-  <span class:list={["status-dot", STATUS_BAR_CONFIG[variant].dot_color ]}></span>
-  <span>{STATUS_BAR_CONFIG[variant].status_text}</span>
+  <span class:list={["status-dot", dotColor ]}></span>
+  <span>{labelToShow}</span>
   <span class="separator">·</span>
   <span>{buildTag}</span>
   <span style="flex:1;"></span>

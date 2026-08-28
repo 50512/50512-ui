@@ -1,7 +1,7 @@
 {
   "name": "@50512/ui",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -16,7 +16,7 @@
     "./logo": "./src/components/logo/index.ts",
     "./pills": "./src/components/pills/index.ts",
     "./status-bar": "./src/components/StatusBar.astro",
-    "./status-bar/config": "./src/utils/statusBarConfig.ts",
+    "./statusPagesConfig": "./src/utils/statusPagesConfig.ts",
     "./button": "./src/components/LabButton.astro",
     "./package.json": "./package.json"
   },
@@ -39,8 +39,8 @@
     "astro": "^7.0.0"
   },
   "devDependencies": {
-    "astro": "^7.1.6",
     "@resvg/resvg-js": "^2.6.2",
+    "astro": "^7.1.6",
     "fontkit": "^2.0.4"
   }
 }
