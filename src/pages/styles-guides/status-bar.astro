@@ -1,9 +1,9 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import StylePages from "../../layouts/StylePages.astro";
 import StatusBar from "../../components/StatusBar.astro";
 import { STATUS_COMPONENTS_CONFIG, type StatusKeysType } from "../../utils/statusPagesConfig";
 ---
-<BaseLayout title="Barra de estado">
+<StylePages title="Barra de estado">
   <h1>Barra de estado</h1>
   <h2>Posibles estados:</h2>
   <div class="status-container">
@@ -16,7 +16,7 @@ import { STATUS_COMPONENTS_CONFIG, type StatusKeysType } from "../../utils/statu
       ))
     }
   </div>
-</BaseLayout>
+</StylePages>
 
 <style>
   .status-container {

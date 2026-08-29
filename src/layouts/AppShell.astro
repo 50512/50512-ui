@@ -8,40 +8,40 @@ interface Props {
   title: string;
   status?: StatusKeysType;
   barLabel?: string;
+  lang?: string;
+  showStatusBar?: boolean;
 }
 
 const {
   title,
   status = "operational",
   barLabel,
+  lang = "es-419",
+  showStatusBar = true,
 } = Astro.props;
 ---
 <!DOCTYPE html>
-<html lang="es-419" transition:animate="none">
+<html lang={lang} transition:animate="none">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 	<link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <slot name="head"></slot>
   <title>{title}</title>
 
   <ClientRouter />
 </head>
-<body>
-  <div class="page">
-    <StatusBar transition:persist="status-bar" variant={status} label={barLabel}/>
-    <main>
-      <div class="wrapper">
-        <slot />
-      </div>
-    </main>
-    <footer class="footer">
-      <div class="wrap-footer">
-        Powered by <a href="https://50512.dev/">50512</a>
-      </div>
-    </footer>
-  </div>
+<body class="page">
+  {showStatusBar && <StatusBar transition:persist="status-bar" variant={status} label={barLabel}/>}
+  <slot name="navbar"/>
+  <slot/>
+  <footer class="footer">
+    <div class="wrap-footer">
+      Powered by <a href="https://50512.dev/">50512</a>
+    </div>
+  </footer>
 </body>
 </html>
 
@@ -52,12 +52,8 @@ const {
     min-height: 100svh;
   }
 
-  .wrapper {
-    max-width: var(--content-max);
-    margin: 0 auto;
-  }
-
   .footer {
+    margin-top: auto;
     padding: var(--space-6) var(--space-5) var(--space-3);
     background: var(--ink);
     color: var(--surface-2);
@@ -67,13 +63,7 @@ const {
     max-width: var(--content-max);
 
     a {
-      color: var(--brand-blue-700
-      );
+      color: var(--brand-blue-700);
     }
-  }
-
-  main {
-    flex: 1;
-    padding: 0 var(--space-5);
   }
 </style>

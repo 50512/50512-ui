@@ -1,0 +1,18 @@
+---
+import "../styles/fonts.css"
+import "../styles/styles.css"
+---
+<main>
+  <div class="wrapper">
+    <slot />
+  </div>
+</main>
+<style>
+  main {
+    padding: 0 var(--space-5);
+  }
+  .wrapper {
+    max-width: var(--content-max);
+    margin: 0 auto;
+  }
+</style>
