@@ -3,18 +3,13 @@ import '../styles/fonts.css';
 import '../styles/styles.css';
 import { ClientRouter } from 'astro:transitions';
 import StatusBar from '../components/StatusBar.astro';
-import { type StatusKeysType } from '../utils/statusPagesConfig';
-interface Props {
-  title: string;
-  status?: StatusKeysType;
-  barLabel?: string;
-  lang?: string;
-  showStatusBar?: boolean;
-}
+import type { AppShellProps } from './types';
+
+type Props = AppShellProps;
 
 const {
   title,
-  status = "operational",
+  status = "operative",
   barLabel,
   lang = "es-419",
   showStatusBar = true,

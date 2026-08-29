@@ -1,20 +1,13 @@
 ---
 import { AppShell, ContentShell } from ".";
-import { type StatusKeysType } from "../utils/statusPagesConfig";
-interface Props {
-  title: string;
-  status?: StatusKeysType;
-  barLabel?: string;
-}
+import type { AppShellProps } from "../layouts/types";
 
-const {
-  title,
-  status = "operational",
-  barLabel,
-} = Astro.props;
+type Props = Pick<AppShellProps, "title" | "status" | "barLabel">
+
+const props = Astro.props;
 ---
 
-<AppShell title={title} status={status} barLabel={barLabel}>
+<AppShell { ...props }>
   <ContentShell>
     <slot />
   </ContentShell>

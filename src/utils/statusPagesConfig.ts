@@ -5,7 +5,7 @@ const DOT_COLORS = {
 } as const;
 
 export const STATUS_COMPONENTS_CONFIG = {
-  operational: {
+  operative: {
     dot_color: DOT_COLORS.green,
     status_text: "OPERATIVO",
   },
