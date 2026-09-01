@@ -7,6 +7,12 @@ import { STATUS_COMPONENTS_CONFIG, type StatusKeysType } from "../../utils/statu
   <h1>Barra de estado</h1>
   <h2>Posibles estados:</h2>
   <div class="status-container">
+    <h3>Multi tags</h3>
+    <StatusBar>
+      <span>tag test</span>
+      <span>new tag</span>
+      <span>updated on: yesterday</span>
+    </StatusBar>
     {
       Object.keys(STATUS_COMPONENTS_CONFIG).map((config) => (
         <div>
@@ -23,5 +29,6 @@ import { STATUS_COMPONENTS_CONFIG, type StatusKeysType } from "../../utils/statu
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
+    padding-bottom: var(--space-2);
   }
 </style>

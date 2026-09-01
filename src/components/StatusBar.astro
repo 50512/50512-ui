@@ -28,7 +28,15 @@ const dotColor = STATUS_COMPONENTS_CONFIG[variant].dot_color;
   <span>{labelToShow}</span>
   <span class="separator">·</span>
   <span>{buildTag}</span>
-  <span style="flex:1;"></span>
+
+  {
+    Astro.slots.has("default") && (
+      <div class="status-extra">
+        <slot />
+      </div>
+    )
+  }
+
   <span class="clock" id="clock">UTC --:--:--</span>
 </div>
 
@@ -84,9 +92,37 @@ const dotColor = STATUS_COMPONENTS_CONFIG[variant].dot_color;
     color: var(--surface-1);
     line-height: unset;
     font-variant-numeric: tabular-nums;
+    overflow-x: hidden;
   }
 
   .separator {
     color: var(--ink-3);
   }
+
+  .clock {
+    margin-left: auto;
+  }
+
+  .status-extra {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .status-extra::before {
+    content: "·";
+    color: var(--ink-3);
+  }
+
+  .status-extra > :global(* + *)::before {
+    content: "·";
+    color: var(--ink-3);
+    margin-right: var(--space-4);
+  }
+
+  @media (max-width: 640px) {
+  .status-extra {
+    display: none;
+  }
+}
 </style>

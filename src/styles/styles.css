@@ -112,6 +112,8 @@
   --header-h: 64px;
   --sidebar-w: 240px;
   --tile: 64px;
+  --responsive-breakout-1: 640px;
+  --responsive-breakout-2: 450px;
 
   /* --------- FONDO --------- */
   --tile-line: rgba(28, 32, 38, 0.03);
