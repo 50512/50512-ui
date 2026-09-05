@@ -1,28 +1,28 @@
 ---
-import "../../styles/fonts.css"
-import "../../styles/styles.css"
+import "../../styles/fonts.css";
+import "../../styles/styles.css";
 
 const configVariants = {
   operative: {
     dot_color: "green",
-    pill_text: "OPERATIVO"
+    pill_text: "OPERATIVO",
   },
   trial: {
     dot_color: "orange",
-    pill_text: "EN PROGRESO"
+    pill_text: "EN PROGRESO",
   },
   offline: {
     dot_color: "red",
-    pill_text: "NO DISPONIBLE"
-  }
+    pill_text: "NO DISPONIBLE",
+  },
 } as const;
 
 type ConfigVariantKeys = keyof typeof configVariants;
 
 interface Props {
-  variant?: ConfigVariantKeys,
-  noUppercase?: boolean,
-  label?: string,
+  variant?: ConfigVariantKeys;
+  noUppercase?: boolean;
+  label?: string;
   class?: string;
 }
 
@@ -37,9 +37,10 @@ const currentConfigVariant = configVariants[variant];
 const dotColor = currentConfigVariant.dot_color;
 const labelToShow = label || currentConfigVariant.pill_text;
 ---
+
 <span
   class:list={["pills", "micro", className]}
-  style={noUppercase && ("text-transform: none; letter-spacing: unset;")}
+  style={noUppercase && "text-transform: none; letter-spacing: unset;"}
 >
   <span class:list={["dot", dotColor]}></span>
   {labelToShow}

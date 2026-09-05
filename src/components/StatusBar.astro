@@ -1,7 +1,10 @@
 ---
-import "../styles/fonts.css"
-import "../styles/styles.css"
-import { STATUS_COMPONENTS_CONFIG, type StatusKeysType } from "../utils/statusPagesConfig";
+import "../styles/fonts.css";
+import "../styles/styles.css";
+import {
+  STATUS_COMPONENTS_CONFIG,
+  type StatusKeysType,
+} from "../utils/statusPagesConfig";
 
 const now = new Date();
 const year = now.getUTCFullYear();
@@ -15,16 +18,14 @@ interface Props {
   label?: string;
 }
 
-const {
-  variant = "operative",
-  label,
-} = Astro.props;
+const { variant = "operative", label } = Astro.props;
 
 const labelToShow = label || STATUS_COMPONENTS_CONFIG[variant].status_text;
 const dotColor = STATUS_COMPONENTS_CONFIG[variant].dot_color;
 ---
+
 <div class="status-bar micro">
-  <span class:list={["status-dot", dotColor ]}></span>
+  <span class:list={["status-dot", dotColor]}></span>
   <span>{labelToShow}</span>
   <span class="separator">·</span>
   <span>{buildTag}</span>
@@ -49,12 +50,12 @@ const dotColor = STATUS_COMPONENTS_CONFIG[variant].dot_color;
 
     const render = () => {
       const now = new Date();
-      const hours = String(now.getUTCHours()).padStart(2, '0');
-      const minutes = String(now.getUTCMinutes()).padStart(2, '0');
-      const seconds = String(now.getUTCSeconds()).padStart(2, '0');
-      
+      const hours = String(now.getUTCHours()).padStart(2, "0");
+      const minutes = String(now.getUTCMinutes()).padStart(2, "0");
+      const seconds = String(now.getUTCSeconds()).padStart(2, "0");
+
       utcClock.textContent = `UTC ${hours}:${minutes}:${seconds}`;
-    }
+    };
 
     render();
     clearInterval(clockInterval);
@@ -121,8 +122,8 @@ const dotColor = STATUS_COMPONENTS_CONFIG[variant].dot_color;
   }
 
   @media (max-width: 640px) {
-  .status-extra {
-    display: none;
+    .status-extra {
+      display: none;
+    }
   }
-}
 </style>

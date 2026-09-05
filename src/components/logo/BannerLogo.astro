@@ -1,9 +1,9 @@
 ---
-import '../../styles/fonts.css';
-import '../../styles/styles.css';
-import TermFrame from './subcomponents/TermFrame.astro';
-import TermBody from './subcomponents/TermBody.astro';
-import BrandText from './subcomponents/BrandText.astro';
+import "../../styles/fonts.css";
+import "../../styles/styles.css";
+import TermFrame from "./subcomponents/TermFrame.astro";
+import TermBody from "./subcomponents/TermBody.astro";
+import BrandText from "./subcomponents/BrandText.astro";
 interface Props {
   // Texto despues de `//`
   tag?: string;
@@ -25,8 +25,8 @@ const {
 ---
 
 <TermFrame class:list={[className]} showStatus={showStatus}>
-  <TermBody class='small'>
-    <BrandText />
+  <TermBody>
+    <BrandText variant="banner" />
     <div class="side micro">
       <span>// {tag}</span>
       <span>// {role}</span>

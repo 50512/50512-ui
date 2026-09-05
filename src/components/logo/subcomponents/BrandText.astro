@@ -1,14 +1,26 @@
 ---
-import '../../../styles/fonts.css';
-import '../../../styles/styles.css';
+import "../../../styles/fonts.css";
+import "../../../styles/styles.css";
+
+const VARIANTS = {
+  banner: ["display-lg"],
+  portrait: ["display-lg", "portrait-brand"],
+  square: ["display", "square-brand"],
+  small: ["display", "square-brand"],
+  wordmark: ["h2", "wordmark"],
+} as const;
+
 interface Props {
-  class?: string,
+  variant?: keyof typeof VARIANTS;
+  class?: string;
 }
-const {
-  class: className,
-} = Astro.props;
+
+const { variant = "banner", class: className } = Astro.props;
+
+const currentVariant = VARIANTS[variant];
 ---
-<div class:list={["brand", className]}>
+
+<div class:list={["brand", currentVariant, className]}>
   <span class="blue">5</span>
   <span class="orange">0</span>
   <span class="blue">5</span>
@@ -19,10 +31,8 @@ const {
 
 <style>
   .brand {
-    font-size: var(--fs-display-lg);
+    font-family: var(--font-mono);
     font-weight: 600;
-    line-height: var(--lh-display-lg);
-    letter-spacing: var(--tr-display-lg);
     margin: 0;
     word-break: keep-all;
   }
@@ -35,8 +45,14 @@ const {
 
   .square-brand {
     text-align: center;
-    font-size: var(--fs-display);
-    letter-spacing: var(--tr-display);
-    line-height: var(--lh-display);
+  }
+
+  .wordmark > .ink {
+    color: var(--ink-3);
+  }
+
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 700;
   }
 </style>

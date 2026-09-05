@@ -1,11 +1,11 @@
 ---
-import "../styles/fonts.css"
-import "../styles/styles.css"
+import "../styles/fonts.css";
+import "../styles/styles.css";
 
 interface Props {
-  type?: "submit"|"reset"|"button";
-  variant?: "primary"|"accent"|"ghost";
-  noUppercase?: boolean,
+  type?: "submit" | "reset" | "button";
+  variant?: "primary" | "accent" | "ghost";
+  noUppercase?: boolean;
   disabled?: boolean;
   class?: string;
 }
@@ -16,13 +16,14 @@ const {
   noUppercase = false,
   disabled = false,
   class: className,
-} = Astro.props
+} = Astro.props;
 ---
+
 <button
   type={type}
   class:list={["btn", `btn-${variant}`, "micro", className]}
   disabled={disabled}
-  style={noUppercase && ("text-transform: none; letter-spacing: unset;")}
+  style={noUppercase && "text-transform: none; letter-spacing: unset;"}
 >
   <slot />
 </button>
@@ -31,7 +32,7 @@ const {
   .btn {
     font-weight: 700;
     color: var(--ink);
-    
+
     display: inline-flex;
     align-items: center;
     gap: var(--space-2);

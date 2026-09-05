@@ -12,18 +12,24 @@
  *   public/apple-touch-icon.png
  *   public/brand/preview.html  hoja de contacto para revisar el resultado
  */
-import { mkdirSync, writeFileSync, readdirSync, rmSync, statSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
-import { join, relative } from 'node:path';
+import {
+  mkdirSync,
+  writeFileSync,
+  readdirSync,
+  rmSync,
+  statSync,
+} from "node:fs";
+import { fileURLToPath } from "node:url";
+import { join, relative } from "node:path";
 
-import { VARIANTS } from './brand/variants.mjs';
-import { toPng, toIco } from './brand/raster.mjs';
-import { CSS_PATH } from './brand/tokens.mjs';
-import { fontInfo } from './brand/text.mjs';
+import { VARIANTS } from "./brand/variants.mjs";
+import { toPng, toIco } from "./brand/raster.mjs";
+import { CSS_PATH } from "./brand/tokens.mjs";
+import { fontInfo } from "./brand/text.mjs";
 
-const APP = fileURLToPath(new URL('..', import.meta.url));
-const PUBLIC = join(APP, 'public');
-const BRAND = join(PUBLIC, 'brand');
+const APP = fileURLToPath(new URL("..", import.meta.url));
+const PUBLIC = join(APP, "public");
+const BRAND = join(PUBLIC, "brand");
 
 const PNG_SCALES = [1, 2, 4];
 const FAVICON_SIZES = [16, 32, 48];
@@ -50,8 +56,8 @@ function emptyDir(dir) {
 
 /* ------------------------------------------------------------------ */
 emptyDir(BRAND);
-emptyDir(join(BRAND, 'svg'));
-emptyDir(join(BRAND, 'png'));
+emptyDir(join(BRAND, "svg"));
+emptyDir(join(BRAND, "png"));
 
 const built = {};
 const metrics = {};
@@ -61,26 +67,34 @@ for (const [name, build] of Object.entries(VARIANTS)) {
   built[name] = result.svg;
   metrics[name] = result.metrics;
 
-  write(join(BRAND, 'svg', `${name}.svg`), result.svg);
+  write(join(BRAND, "svg", `${name}.svg`), result.svg);
 
   for (const scale of PNG_SCALES) {
     write(
-      join(BRAND, 'png', `${name}@${scale}x.png`),
+      join(BRAND, "png", `${name}@${scale}x.png`),
       toPng(result.svg, { width: result.metrics.width * scale }),
     );
   }
 }
 
 /* Metricas de layout, para que /brand-check detecte desincronizaciones */
-write(join(BRAND, 'metrics.json'), `${JSON.stringify(metrics, null, 2)}\n`);
+write(join(BRAND, "metrics.json"), `${JSON.stringify(metrics, null, 2)}\n`);
 
 /* Favicon e icono de aplicacion, desde la marca reducida ------------- */
-write(join(PUBLIC, 'favicon.svg'), built.mark);
+write(join(PUBLIC, "favicon.svg"), built.mark);
 write(
-  join(PUBLIC, 'favicon.ico'),
-  toIco(FAVICON_SIZES.map((size) => ({ size, png: toPng(built.mark, { width: size }) }))),
+  join(PUBLIC, "favicon.ico"),
+  toIco(
+    FAVICON_SIZES.map((size) => ({
+      size,
+      png: toPng(built.mark, { width: size }),
+    })),
+  ),
 );
-write(join(PUBLIC, 'apple-touch-icon.png'), toPng(built.mark, { width: APPLE_TOUCH_SIZE }));
+write(
+  join(PUBLIC, "apple-touch-icon.png"),
+  toPng(built.mark, { width: APPLE_TOUCH_SIZE }),
+);
 
 /* Hoja de contacto --------------------------------------------------- */
 const preview = `<!doctype html>
@@ -122,7 +136,7 @@ ${Object.keys(built)
     (n) =>
       `    <figure><img src="svg/${n}.svg" alt="${n}"><figcaption>${n}.svg</figcaption></figure>`,
   )
-  .join('\n')}
+  .join("\n")}
   </div>
 </section>
 
@@ -132,19 +146,21 @@ ${Object.keys(built)
 ${FAVICON_SIZES.map(
   (s) =>
     `    <figure><img src="png/mark@1x.png" width="${s}" height="${s}" alt="${s}px"><figcaption>${s}px</figcaption></figure>`,
-).join('\n')}
+).join("\n")}
   </div>
 </section>
 </body>
 </html>
 `;
-write(join(BRAND, 'preview.html'), preview);
+write(join(BRAND, "preview.html"), preview);
 
 /* Resumen ------------------------------------------------------------ */
 const kb = (b) => `${(b / 1024).toFixed(1)} kB`;
 console.log(`tokens : ${relative(APP, CSS_PATH)}`);
-console.log(`fuente : ${fontInfo.family} — pesos ${fontInfo.weights.join(', ')}`);
-console.log('');
+console.log(
+  `fuente : ${fontInfo.family} — pesos ${fontInfo.weights.join(", ")}`,
+);
+console.log("");
 for (const { path, bytes } of written) {
   console.log(`  ${relative(APP, path).padEnd(38)} ${kb(bytes).padStart(9)}`);
 }

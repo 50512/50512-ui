@@ -29,12 +29,9 @@
   },
   "dependencies": {
     "@fontsource/barlow": "^5.3.0",
-    "@fontsource/cascadia-code": "^5.3.0",
     "@fontsource/cascadia-mono": "^5.3.0",
     "@fontsource/ibm-plex-mono": "^5.3.0",
-    "@fontsource/ibm-plex-sans": "^5.3.0",
-    "@fontsource/press-start-2p": "^5.3.0",
-    "@fontsource/vt323": "^5.3.0"
+    "@fontsource/ibm-plex-sans": "^5.3.0"
   },
   "peerDependencies": {
     "astro": "^7.0.0"
@@ -42,6 +39,9 @@
   "devDependencies": {
     "@resvg/resvg-js": "^2.6.2",
     "astro": "^7.1.6",
-    "fontkit": "^2.0.4"
-  }
+    "fontkit": "^2.0.4",
+    "prettier": "^3.9.6",
+    "prettier-plugin-astro": "^0.14.1"
+  },
+  "packageManager": "pnpm@11.25.0+sha512.5cde925b4f075f725eb71fbae18a42ffe784524789f19b61c731cb8721ec28aaee160e01a8d5af4fedb2a42cdbf300efe23db356b0d4a17b4d63e11f8ab7c956"
 }

@@ -1,19 +1,27 @@
 ---
-import StylePages from '../../layouts/StylePages.astro';
-import { BannerLogo, PortraitLogo, SquareLogo, SmallLogo } from '../../components/logo';
+import StylePages from "../../layouts/StylePages.astro";
+import {
+  BannerLogo,
+  PortraitLogo,
+  SquareLogo,
+  SmallLogo,
+} from "../../components/logo";
 ---
-<StylePages title='Logos HTML'>
+
+<StylePages title="Logos HTML">
   <h1>Logos oficiales (HTML)</h1>
-  <p>Conjunto oficial de logos en <span class="code">HTML/CSS</span>.
-    De estos se generan los rasterizados en <a href="../brand-check/">/brand-check</a></p>
+  <p>
+    Conjunto oficial de logos en <span class="code">HTML/CSS</span>. De estos se
+    generan los rasterizados en <a href="../brand-check/">/brand-check</a>
+  </p>
   <div class="container">
     <BannerLogo />
     <PortraitLogo />
     <div class="icon-row">
       <SquareLogo />
-      <SquareLogo showStatus/>
+      <SquareLogo showStatus />
       <SmallLogo />
-      <SmallLogo showStatus/>
+      <SmallLogo showStatus />
     </div>
   </div>
 </StylePages>

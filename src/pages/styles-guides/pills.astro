@@ -2,15 +2,16 @@
 import StylePages from "../../layouts/StylePages.astro";
 import { StatusPill, TagPill } from "../../components/pills";
 ---
+
 <StylePages title="Capsulas">
   <div class="pills-wrapper">
     <h1>Capsulas</h1>
     <h2>Capsulas de estado</h2>
     <div class="section-pill">
-      <StatusPill variant="operative"/>
-      <StatusPill variant="trial"/>
-      <StatusPill variant="offline"/>
-      <StatusPill variant="operative" label="CUSTOM LABEL"/>
+      <StatusPill variant="operative" />
+      <StatusPill variant="trial" />
+      <StatusPill variant="offline" />
+      <StatusPill variant="operative" label="CUSTOM LABEL" />
     </div>
     <h2>Capsulas de etiqueta</h2>
     <div class="section-pill">

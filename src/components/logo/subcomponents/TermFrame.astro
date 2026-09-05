@@ -1,7 +1,7 @@
 ---
-import '../../../styles/fonts.css';
-import '../../../styles/styles.css';
-import TermBar from './TermBar.astro';
+import "../../../styles/fonts.css";
+import "../../../styles/styles.css";
+import TermBar from "./TermBar.astro";
 interface Props {
   // Texto de estado superior derecho
   showStatus?: boolean;
@@ -13,11 +13,7 @@ interface Props {
   class?: string;
 }
 
-const {
-  showStatus = true,
-  squareScale = 1,
-  class: className,
-} = Astro.props;
+const { showStatus = true, squareScale = 1, class: className } = Astro.props;
 ---
 
 <div class:list={["term", className]}>
@@ -28,7 +24,7 @@ const {
   <slot />
 </div>
 
-<style define:vars={{ "square-scale": squareScale}}>
+<style define:vars={{ "square-scale": squareScale }}>
   .term {
     --text-color: var(--surface-1);
     --term-border: 1px solid var(--ink-2);

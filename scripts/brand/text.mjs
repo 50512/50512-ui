@@ -7,8 +7,8 @@
  * `letter-spacing`) para que las posiciones coincidan con lo que pinta el
  * navegador en los componentes Astro.
  */
-import * as fontkit from 'fontkit';
-import { fileURLToPath } from 'node:url';
+import * as fontkit from "fontkit";
+import { fileURLToPath } from "node:url";
 
 const fontPath = (weight) =>
   fileURLToPath(
@@ -23,7 +23,10 @@ const fontPath = (weight) =>
  * el peso normal del body. Ambos cortes comparten metricas, asi que solo
  * cambia el trazo.
  */
-const FONTS = { 400: fontkit.openSync(fontPath(400)), 600: fontkit.openSync(fontPath(600)) };
+const FONTS = {
+  400: fontkit.openSync(fontPath(400)),
+  600: fontkit.openSync(fontPath(600)),
+};
 export const DEFAULT_WEIGHT = 400;
 
 const font = FONTS[600];
@@ -31,7 +34,7 @@ const UPM = font.unitsPerEm;
 const ASCENT = font.ascent / UPM;
 const DESCENT = font.descent / UPM; // negativo
 /** Cascadia Mono: todos los glifos avanzan lo mismo. */
-const ADVANCE = font.layout('0').glyphs[0].advanceWidth / UPM;
+const ADVANCE = font.layout("0").glyphs[0].advanceWidth / UPM;
 
 /**
  * Ancho de una cadena tal y como la mide CSS.
@@ -63,7 +66,7 @@ function glyphsToPath(text, size, trackingEm, penX, baselineY, weight) {
     x += step;
   }
 
-  return { d: parts.join(' '), endX: x };
+  return { d: parts.join(" "), endX: x };
 }
 
 /**
@@ -74,7 +77,10 @@ function glyphsToPath(text, size, trackingEm, penX, baselineY, weight) {
  * @param {Array<[string, string]>} runs pares [texto, color]
  * @returns {{ paths: Array<{d: string, fill: string}>, width: number }}
  */
-export function runsToPaths(runs, { size, tracking = 0, x = 0, baseline: y, weight = DEFAULT_WEIGHT }) {
+export function runsToPaths(
+  runs,
+  { size, tracking = 0, x = 0, baseline: y, weight = DEFAULT_WEIGHT },
+) {
   const paths = [];
   let pen = x;
 

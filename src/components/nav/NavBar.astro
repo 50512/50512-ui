@@ -1,5 +1,36 @@
 ---
 import "../../styles/styles.css";
 import "../../styles/fonts.css";
+import { BrandText } from "../logo";
+
+interface Props {
+  baseURL?: string;
+}
+
+const { baseURL = "/" } = Astro.props;
 ---
-<nav>Homero chino</nav>
+
+<nav>
+  <a href={baseURL}>
+    <BrandText variant="wordmark" />
+  </a>
+</nav>
+
+<style>
+  nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-4);
+
+    background: var(--surface-1);
+    padding: 0 var(--space-5);
+    height: var(--tile);
+    width: 100%;
+    border-bottom: var(--border-soft);
+  }
+
+  a {
+    text-decoration: none;
+  }
+</style>

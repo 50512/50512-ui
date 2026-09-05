@@ -1,16 +1,16 @@
 ---
-import '../../styles/fonts.css';
-import '../../styles/styles.css';
-import TermFrame from './subcomponents/TermFrame.astro';
-import TermBody from './subcomponents/TermBody.astro';
-import BrandText from './subcomponents/BrandText.astro';
+import "../../styles/fonts.css";
+import "../../styles/styles.css";
+import TermFrame from "./subcomponents/TermFrame.astro";
+import TermBody from "./subcomponents/TermBody.astro";
+import BrandText from "./subcomponents/BrandText.astro";
 interface Props {
   // Texto despues de `//`
   tag?: string;
 
   // Prompt `whoami`
   showPrompt?: boolean;
-  
+
   // Texto esquina inferior derecha
   showMeta?: boolean;
 
@@ -29,6 +29,7 @@ const {
   class: className,
 } = Astro.props;
 ---
+
 <TermFrame class:list={[className]} showStatus={showStatus}>
   <TermBody class="small portrait-body">
     {
@@ -39,7 +40,7 @@ const {
       )
     }
 
-    <BrandText class="portrait-brand"/>
+    <BrandText variant="portrait" />
 
     {
       showMeta && (

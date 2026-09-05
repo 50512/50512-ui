@@ -1,12 +1,14 @@
 /** Rasterizado a PNG (resvg) y empaquetado ICO. */
-import { Resvg } from '@resvg/resvg-js';
+import { Resvg } from "@resvg/resvg-js";
 
 /**
  * Rasteriza un SVG a PNG. Como el texto ya son trazados, resvg no necesita
  * resolver ninguna fuente.
  */
 export function toPng(svg, { width }) {
-  const resvg = new Resvg(svg, { fitTo: { mode: 'width', value: Math.round(width) } });
+  const resvg = new Resvg(svg, {
+    fitTo: { mode: "width", value: Math.round(width) },
+  });
   return resvg.render().asPng();
 }
 

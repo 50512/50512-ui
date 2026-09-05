@@ -1,9 +1,9 @@
 ---
-import '../styles/fonts.css';
-import '../styles/styles.css';
-import { ClientRouter } from 'astro:transitions';
-import StatusBar from '../components/StatusBar.astro';
-import type { AppShellProps } from './types';
+import "../styles/fonts.css";
+import "../styles/styles.css";
+import { ClientRouter } from "astro:transitions";
+import StatusBar from "../components/StatusBar.astro";
+import type { AppShellProps } from "./types";
 
 type Props = AppShellProps;
 
@@ -15,29 +15,43 @@ const {
   showStatusBar = true,
 } = Astro.props;
 ---
-<!DOCTYPE html>
-<html lang={lang} transition:animate="none">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-	<link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
-	<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  <slot name="head"></slot>
-  <title>{title}</title>
 
-  <ClientRouter />
-</head>
-<body class="page">
-  {showStatusBar && <StatusBar transition:persist="status-bar" variant={status} label={barLabel}/>}
-  <slot name="navbar"/>
-  <slot/>
-  <footer class="footer">
-    <div class="wrap-footer">
-      Powered by <a href="/">50512</a>
-    </div>
-  </footer>
-</body>
+<!doctype html>
+<html lang={lang} transition:animate="none">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/favicon.ico"
+      sizes="16x16 32x32 48x48"
+    />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <slot name="head" />
+    <title>{title}</title>
+
+    <ClientRouter />
+  </head>
+  <body class="page">
+    {
+      showStatusBar && (
+        <StatusBar
+          transition:persist="status-bar"
+          variant={status}
+          label={barLabel}
+        />
+      )
+    }
+    <slot name="navbar" />
+    <slot />
+    <footer class="footer">
+      <div class="wrap-footer">
+        Powered by <a href="/">50512</a>
+      </div>
+    </footer>
+  </body>
 </html>
 
 <style>

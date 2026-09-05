@@ -2,4 +2,4 @@ export { default as BannerLogo } from "./BannerLogo.astro";
 export { default as PortraitLogo } from "./PortraitLogo.astro";
 export { default as SquareLogo } from "./SquareLogo.astro";
 export { default as SmallLogo } from "./SmallLogo.astro";
-export { default as WordMark } from "./subcomponents/BrandText.astro";
+export { default as BrandText } from "./subcomponents/BrandText.astro";

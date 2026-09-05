@@ -1,24 +1,19 @@
 ---
-import '../../../styles/fonts.css';
-import '../../../styles/styles.css';
-import ThreeDots from './ThreeDots.astro';
-import StatusMsg from './StatusMsg.astro';
+import "../../../styles/fonts.css";
+import "../../../styles/styles.css";
+import ThreeDots from "./ThreeDots.astro";
+import StatusMsg from "./StatusMsg.astro";
 interface Props {
   // Texto de estado superior derecho
   showStatus?: boolean;
 }
 
-const {
-  showStatus = true,
-} = Astro.props;
+const { showStatus = true } = Astro.props;
 ---
+
 <div class="term-bar">
   <ThreeDots />
-  {
-    showStatus && (
-      <StatusMsg />
-    )
-  }
+  {showStatus && <StatusMsg />}
 </div>
 
 <style>

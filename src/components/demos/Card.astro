@@ -3,12 +3,10 @@ interface Props {
   class?: string;
 }
 
-const {
-  class: className
-} = Astro.props
+const { class: className } = Astro.props;
 ---
-<div class:list={["card", className]}>
-</div>
+
+<div class:list={["card", className]}></div>
 
 <style>
   .card {

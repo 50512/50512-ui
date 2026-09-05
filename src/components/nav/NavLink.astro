@@ -1,0 +1,14 @@
+---
+import "../../../styles/fonts.css";
+import "../../../styles/styles.css";
+
+interface Props {
+  href: string;
+}
+
+const { href } = Astro.props;
+---
+
+<a href={href}>
+  <slot />
+</a>

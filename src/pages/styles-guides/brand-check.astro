@@ -9,26 +9,26 @@
  *   contra las metricas de public/brand/metrics.json. Es la red de seguridad
  *   contra la desincronizacion entre styles.css y scripts/brand/variants.mjs.
  */
-import '../../styles/fonts.css';
-import '../../styles/styles.css';
-import BannerLogo from '../../components/logo/BannerLogo.astro';
-import PortraitLogo from '../../components/logo/PortraitLogo.astro';
-import SquareLogo from '../../components/logo/SquareLogo.astro';
-import SmallLogo from '../../components/logo/SmallLogo.astro';
+import "../../styles/fonts.css";
+import "../../styles/styles.css";
+import BannerLogo from "../../components/logo/BannerLogo.astro";
+import PortraitLogo from "../../components/logo/PortraitLogo.astro";
+import SquareLogo from "../../components/logo/SquareLogo.astro";
+import SmallLogo from "../../components/logo/SmallLogo.astro";
 
 const ROWS = [
-  { name: 'banner', Component: BannerLogo, props: {} },
-  { name: 'portrait', Component: PortraitLogo, props: {} },
-  { name: 'square', Component: SquareLogo, props: {} },
-  { name: 'square-status', Component: SquareLogo, props: { showStatus: true } },
-  { name: 'small', Component: SmallLogo, props: {} },
-  { name: 'small-status', Component: SmallLogo, props: { showStatus: true } },
+  { name: "banner", Component: BannerLogo, props: {} },
+  { name: "portrait", Component: PortraitLogo, props: {} },
+  { name: "square", Component: SquareLogo, props: {} },
+  { name: "square-status", Component: SquareLogo, props: { showStatus: true } },
+  { name: "small", Component: SmallLogo, props: {} },
+  { name: "small-status", Component: SmallLogo, props: { showStatus: true } },
 ];
 
 const FAVICON_SIZES = [16, 32, 48, 180];
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es-419">
   <head>
     <meta charset="UTF-8" />
@@ -38,8 +38,8 @@ const FAVICON_SIZES = [16, 32, 48, 180];
   <body>
     <h1 class="h1">Componente vs. SVG exportado</h1>
     <p>
-      <strong>Diferencia</strong> superpone ambos en modo <code>difference</code>:
-      cuanto mas negra, mas fiel. <strong>Delta</strong> compara la caja medida
+      <strong>Diferencia</strong> superpone ambos en modo <code>difference</code
+      >: cuanto mas negra, mas fiel. <strong>Delta</strong> compara la caja medida
       en el navegador contra <code>brand/metrics.json</code>. Regenera con
       <code>pnpm run brand</code>.
     </p>
@@ -57,14 +57,18 @@ const FAVICON_SIZES = [16, 32, 48, 180];
             <tr data-variant={name}>
               <th>{name}</th>
               <td class="dom">
-                <div class="fit"><Component {...props} /></div>
+                <div class="fit">
+                  <Component {...props} />
+                </div>
               </td>
               <td>
                 <img src={`/brand/svg/${name}.svg`} alt={`${name}.svg`} />
               </td>
               <td>
                 <div class="diff">
-                  <div class="fit"><Component {...props} /></div>
+                  <div class="fit">
+                    <Component {...props} />
+                  </div>
                   <img src={`/brand/svg/${name}.svg`} alt="" />
                 </div>
               </td>
@@ -80,7 +84,12 @@ const FAVICON_SIZES = [16, 32, 48, 180];
       {
         FAVICON_SIZES.map((s) => (
           <figure>
-            <img src="/brand/svg/mark.svg" width={s} height={s} alt={`${s}px`} />
+            <img
+              src="/brand/svg/mark.svg"
+              width={s}
+              height={s}
+              alt={`${s}px`}
+            />
             <figcaption>{s}</figcaption>
           </figure>
         ))
@@ -103,43 +112,47 @@ const FAVICON_SIZES = [16, 32, 48, 180];
 
       async function check() {
         await document.fonts.ready;
-        const metrics = await fetch('/brand/metrics.json').then((r) => r.json());
+        const metrics = await fetch("/brand/metrics.json").then((r) =>
+          r.json(),
+        );
 
-        for (const row of document.querySelectorAll<HTMLElement>('tr[data-variant]')) {
+        for (const row of document.querySelectorAll<HTMLElement>(
+          "tr[data-variant]",
+        )) {
           const m = metrics[row.dataset.variant!];
 
           // `container-type: inline-size` bloquea el ancho intrinseco del
           // .term, asi que hay que darselo explicito para poder comparar.
-          for (const fit of row.querySelectorAll<HTMLElement>('.fit')) {
+          for (const fit of row.querySelectorAll<HTMLElement>(".fit")) {
             fit.style.width = `${m.width}px`;
           }
 
-          const term = row.querySelector<HTMLElement>('.dom .term')!;
-          const brand = row.querySelector<HTMLElement>('.dom .brand')!;
+          const term = row.querySelector<HTMLElement>(".dom .term")!;
+          const brand = row.querySelector<HTMLElement>(".dom .brand")!;
           const t = term.getBoundingClientRect();
           const b = brand.getBoundingClientRect();
 
           const deltas = {
             w: t.width - m.width,
             h: t.height - m.height,
-            'brand.x': b.left - t.left - m.brand.x,
-            'brand.y': b.top - t.top - m.brand.y,
-            'brand.w': b.width - m.brand.width,
-            'brand.h': b.height - m.brand.height,
+            "brand.x": b.left - t.left - m.brand.x,
+            "brand.y": b.top - t.top - m.brand.y,
+            "brand.w": b.width - m.brand.width,
+            "brand.h": b.height - m.brand.height,
           };
 
-          const cell = row.querySelector<HTMLElement>('.delta')!;
-          cell.textContent = '';
+          const cell = row.querySelector<HTMLElement>(".delta")!;
+          cell.textContent = "";
           for (const [label, value] of Object.entries(deltas)) {
             const [min, max] = RANGE[label] ?? RANGE.default;
-            const line = document.createElement('div');
-            line.className = value < min || value > max ? 'bad' : 'ok';
-            line.textContent = `${label.padEnd(8)} ${round(value) >= 0 ? '+' : ''}${round(value)}`;
+            const line = document.createElement("div");
+            line.className = value < min || value > max ? "bad" : "ok";
+            line.textContent = `${label.padEnd(8)} ${round(value) >= 0 ? "+" : ""}${round(value)}`;
             cell.append(line);
           }
         }
 
-        document.body.dataset.checked = 'true';
+        document.body.dataset.checked = "true";
       }
 
       check();

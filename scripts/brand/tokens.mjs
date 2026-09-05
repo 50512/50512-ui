@@ -5,10 +5,12 @@
  * styles.css, el generador de marca los recoge en la siguiente ejecucion.
  * Lo unico que vive en el generador es la geometria (ver variants.mjs).
  */
-import { readFileSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
+import { readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 
-const CSS_PATH = fileURLToPath(new URL('../../src/styles/styles.css', import.meta.url));
+const CSS_PATH = fileURLToPath(
+  new URL("../../src/styles/styles.css", import.meta.url),
+);
 
 function parseRoot(css) {
   const block = css.match(/:root\s*\{([\s\S]*?)\n\}/);
@@ -16,9 +18,9 @@ function parseRoot(css) {
 
   const raw = {};
   // Quita comentarios /* ... */ antes de partir por declaraciones.
-  for (const decl of block[1].replace(/\/\*[\s\S]*?\*\//g, '').split(';')) {
+  for (const decl of block[1].replace(/\/\*[\s\S]*?\*\//g, "").split(";")) {
     const m = decl.match(/^\s*(--[\w-]+)\s*:\s*([\s\S]+?)\s*$/);
-    if (m) raw[m[1]] = m[2].replace(/\s+/g, ' ');
+    if (m) raw[m[1]] = m[2].replace(/\s+/g, " ");
   }
   return raw;
 }
@@ -32,7 +34,9 @@ function resolve(raw) {
     if (seen.has(name)) throw new Error(`Referencia circular en ${name}`);
     if (!(name in raw)) throw new Error(`Token no definido: ${name}`);
     seen.add(name);
-    out[name] = raw[name].replace(/var\(\s*(--[\w-]+)\s*\)/g, (_, ref) => expand(ref));
+    out[name] = raw[name].replace(/var\(\s*(--[\w-]+)\s*\)/g, (_, ref) =>
+      expand(ref),
+    );
     seen.delete(name);
     return out[name];
   };
@@ -41,7 +45,7 @@ function resolve(raw) {
   return out;
 }
 
-const tokens = resolve(parseRoot(readFileSync(CSS_PATH, 'utf8')));
+const tokens = resolve(parseRoot(readFileSync(CSS_PATH, "utf8")));
 
 /** Valor crudo del token, ya resuelto (sin `var()`). */
 export function t(name) {
