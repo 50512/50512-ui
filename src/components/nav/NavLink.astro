@@ -1,14 +1,35 @@
 ---
-import "../../../styles/fonts.css";
-import "../../../styles/styles.css";
+import "../../styles/fonts.css";
+import "../../styles/styles.css";
 
 interface Props {
   href: string;
+  matchExact?: boolean;
 }
 
-const { href } = Astro.props;
+const { href, matchExact: exact = false } = Astro.props;
+const currentPath = Astro.url.pathname;
+const isActive = exact
+  ? currentPath === href
+  : currentPath === href || (href !== "/" && currentPath.startsWith(href));
 ---
 
-<a href={href}>
+<a href={href} class:list={[isActive ? "active" : "", "micro"]}>
   <slot />
 </a>
+
+<style>
+  a {
+    text-decoration: none;
+    color: var(--ink-2);
+    font-weight: 700;
+    padding: 22px var(--space-3); /* 22px rígido porque si no se sale el borde */
+    cursor: pointer;
+    border: 2px solid transparent;
+  }
+
+  .active {
+    color: var(--ink);
+    border-bottom-color: var(--accent);
+  }
+</style>

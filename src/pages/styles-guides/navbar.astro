@@ -1,11 +1,14 @@
 ---
 import StylePages from "../../layouts/StylePages.astro";
-import NavBar from "../../components/nav/NavBar.astro";
+import { NavBar, NavLink } from "../../components/nav";
 ---
 
 <StylePages title="Barra de navegación">
   <div>
-    <NavBar />
+    <NavBar>
+      <NavLink href="/style-guides/">Enlace suelto</NavLink>
+      <NavLink href="/style-guides/navbar/">Enlace actual</NavLink>
+    </NavBar>
   </div>
 </StylePages>
 

@@ -1,7 +1,7 @@
 ---
 import { AppShell, ContentShell } from ".";
 import type { AppShellProps } from "../layouts/types";
-import { NavBar } from "../components/nav";
+import { NavBar, NavLink } from "../components/nav";
 
 type Props = Pick<AppShellProps, "title" | "status" | "barLabel">;
 
@@ -9,7 +9,15 @@ const props = Astro.props;
 ---
 
 <AppShell {...props}>
-  <NavBar slot="navbar" baseURL="/styles-guides/" />
+  <NavBar slot="navbar" baseURL="/styles-guides/">
+    <NavLink href="/styles-guides/" matchExact>Inicio</NavLink>
+    <NavLink href="/styles-guides/logos/">Logos</NavLink>
+    <NavLink href="/styles-guides/shadows/">Sombras</NavLink>
+    <NavLink href="/styles-guides/buttons/">Botones</NavLink>
+    <NavLink href="/styles-guides/pills/">Píldoras</NavLink>
+    <NavLink href="/styles-guides/status-bar/">Barra de estado</NavLink>
+    <NavLink href="/styles-guides/navbar/">Barra de navegación</NavLink>
+  </NavBar>
   <ContentShell>
     <slot />
   </ContentShell>
