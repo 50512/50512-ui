@@ -100,6 +100,7 @@
   --shadow-label: 4px 4px 0 var(--ink);
   --shadow-label-blue: 4px 4px 0 var(--brand-blue-700);
   --shadow-label-orange: 4px 4px 0 var(--brand-orange-700);
+  --shadow-label-gray: 4px 4px 0 var(--surface-3);
 
   /* --------- MOVIMIENTO --------- */
   --easing-clinical: cubic-bezier(0.2, 0, 0, 1);

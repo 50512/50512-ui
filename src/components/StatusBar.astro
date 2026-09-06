@@ -26,9 +26,9 @@ const dotColor = STATUS_COMPONENTS_CONFIG[variant].dot_color;
 
 <div class="status-bar micro">
   <span class:list={["status-dot", dotColor]}></span>
-  <span>{labelToShow}</span>
+  <span class="status-item tag">{labelToShow}</span>
   <span class="separator">·</span>
-  <span>{buildTag}</span>
+  <span class="status-item tag">{buildTag}</span>
 
   {
     Astro.slots.has("default") && (
@@ -38,7 +38,7 @@ const dotColor = STATUS_COMPONENTS_CONFIG[variant].dot_color;
     )
   }
 
-  <span class="clock" id="clock">UTC --:--:--</span>
+  <span class="clock status-item" id="clock">UTC --:--:--</span>
 </div>
 
 <script>
@@ -85,7 +85,7 @@ const dotColor = STATUS_COMPONENTS_CONFIG[variant].dot_color;
 
   .status-bar {
     display: flex;
-    gap: var(--space-4);
+    gap: clamp(var(--space-1), 1cqw, var(--space-4));
     width: 100%;
     background: var(--ink);
     align-items: center;
@@ -94,6 +94,16 @@ const dotColor = STATUS_COMPONENTS_CONFIG[variant].dot_color;
     line-height: unset;
     font-variant-numeric: tabular-nums;
     overflow-x: hidden;
+  }
+
+  .status-item {
+    white-space: nowrap;
+  }
+
+  .tag {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
   }
 
   .separator {
@@ -107,7 +117,7 @@ const dotColor = STATUS_COMPONENTS_CONFIG[variant].dot_color;
   .status-extra {
     display: flex;
     align-items: center;
-    gap: var(--space-4);
+    gap: clamp(var(--space-1), 1cqw, var(--space-4));
   }
 
   .status-extra::before {
@@ -118,7 +128,7 @@ const dotColor = STATUS_COMPONENTS_CONFIG[variant].dot_color;
   .status-extra > :global(* + *)::before {
     content: "·";
     color: var(--ink-3);
-    margin-right: var(--space-4);
+    margin-right: clamp(var(--space-1), 1cqw, var(--space-4));
   }
 
   @media (max-width: 640px) {
