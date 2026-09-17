@@ -1,19 +1,48 @@
 ---
 import StylePages from "../../layouts/StylePages.astro";
 import LabButton from "../../components/LabButton.astro";
+import LabInput from "../../components/LabInput.astro";
 ---
 
 <StylePages title="Entradas">
-  <h1>Colección de distintos <i>inputs</i></h1>
-  <p>Estos serán los tipos inputs a usar en todo el proyecto.</p>
-
   <div class="wrap">
-    <h2>Botones</h2>
+    <h1>Colección de distintos <i>inputs</i></h1>
+    <p>Estos serán los tipos inputs a usar en todo el proyecto.</p>
+
     <div class="container">
+      <h2>Botones</h2>
       <LabButton variant="primary">Primary</LabButton>
       <LabButton variant="accent">Accent</LabButton>
       <LabButton variant="ghost">Ghost</LabButton>
       <LabButton disabled>Disabled</LabButton>
+    </div>
+    <div class="container">
+      <h2>Entrada de texto</h2>
+      <LabInput label="Con valor" value="Test value" id="i-v" />
+      <LabInput label="Con placeholder" placeholder="test holder" id="i-ph" />
+      <LabInput label="Sin placeholder" id="i-n-ph" />
+      <LabInput value="Sin label" />
+      <LabInput placeholder="Sin label" />
+      <LabInput />
+      <div class="container">
+        <h3>Tipos de entrada</h3>
+        <LabInput
+          label="Correo"
+          placeholder="email@example.com"
+          type="email"
+          id="i-e"
+        />
+        <LabInput label="Fecha" type="date" id="i-f" />
+        <LabInput label="Mes" type="month" id="i-m" />
+        <LabInput label="Semana" type="week" id="i-w" />
+        <LabInput label="Número" type="number" value="50512" id="i-n" />
+        <LabInput
+          label="Contraseña"
+          type="password"
+          placeholder="Contraseña"
+          id="i-p"
+        />
+      </div>
     </div>
   </div>
 </StylePages>
@@ -23,13 +52,20 @@ import LabButton from "../../components/LabButton.astro";
     display: flex;
     flex-direction: row;
     gap: var(--space-3);
+
+    padding-bottom: var(--space-3);
+    flex-wrap: wrap;
+    align-items: flex-end;
   }
   .wrap {
     display: flex;
     flex-direction: column;
-    gap: var(--space-2);
 
     padding: var(--space-3);
     background: var(--surface-1);
+  }
+  h2,
+  h3 {
+    width: 100%;
   }
 </style>

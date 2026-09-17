@@ -1,0 +1,54 @@
+---
+import "../styles/fonts.css";
+import "../styles/styles.css";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"input"> {
+  class?: string;
+  label?: string;
+}
+
+const { class: className, label, ...props } = Astro.props;
+---
+
+<div class="input-container">
+  {
+    label && (
+      <label for={props.id} class:list={["label"]}>
+        {label}
+      </label>
+    )
+  }
+  <input class:list={["small", className]} {...props} />
+</div>
+
+<style>
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+  input {
+    font-family: var(--font-mono);
+    background: var(--surface-1);
+    outline: none;
+    color: var(--ink);
+    padding: var(--space-1) var(--space-2);
+    border: var(--border-emphatic);
+    overflow: hidden;
+    transition:
+      transform var(--dur-micro) var(--easing-clinical),
+      box-shadow var(--dur-micro) var(--easing-clinical);
+  }
+  input::placeholder {
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  input:focus {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-label);
+  }
+  input:invalid:not(:placeholder-shown):not(:focus) {
+    border-color: var(--danger);
+  }
+</style>

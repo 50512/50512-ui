@@ -1,29 +1,31 @@
 ---
 import "../styles/fonts.css";
 import "../styles/styles.css";
+import type { HTMLAttributes } from "astro/types";
 
-interface Props {
-  type?: "submit" | "reset" | "button";
+interface Props extends HTMLAttributes<"button"> {
   variant?: "primary" | "accent" | "ghost";
   noUppercase?: boolean;
-  disabled?: boolean;
   class?: string;
 }
 
 const {
-  type = "button",
   variant = "primary",
   noUppercase = false,
-  disabled = false,
   class: className,
+  ...props
 } = Astro.props;
 ---
 
 <button
-  type={type}
-  class:list={["btn", `btn-${variant}`, "micro", className]}
-  disabled={disabled}
-  style={noUppercase && "text-transform: none; letter-spacing: unset;"}
+  class:list={[
+    "btn",
+    `btn-${variant}`,
+    "micro",
+    noUppercase && "noUppercase",
+    className,
+  ]}
+  {...props}
 >
   <slot />
 </button>
@@ -43,6 +45,11 @@ const {
     transition:
       transform var(--dur-micro) var(--easing-clinical),
       box-shadow var(--dur-micro) var(--easing-clinical);
+  }
+
+  button.noUppercase {
+    text-transform: none;
+    letter-spacing: unset;
   }
 
   .btn:hover {
