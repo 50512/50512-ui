@@ -1,6 +1,6 @@
 ---
-import "../styles/fonts.css";
-import "../styles/styles.css";
+import "../../styles/fonts.css";
+import "../../styles/styles.css";
 import type { HTMLAttributes } from "astro/types";
 
 interface Props extends HTMLAttributes<"input"> {
@@ -9,6 +9,7 @@ interface Props extends HTMLAttributes<"input"> {
 }
 
 const { class: className, label, ...props } = Astro.props;
+props.id = props.id || crypto.randomUUID();
 ---
 
 <div class="input-container">
@@ -24,7 +25,7 @@ const { class: className, label, ...props } = Astro.props;
 
 <style>
   .input-container {
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     gap: var(--space-1);
   }
@@ -50,5 +51,11 @@ const { class: className, label, ...props } = Astro.props;
   }
   input:invalid:not(:placeholder-shown):not(:focus) {
     border-color: var(--danger);
+  }
+  input:disabled {
+    background: var(--surface-2);
+    color: var(--ink-3);
+    border-color: var(--ink-3);
+    pointer-events: none;
   }
 </style>

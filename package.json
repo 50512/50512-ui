@@ -1,7 +1,7 @@
 {
   "name": "@50512/ui",
   "type": "module",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -17,7 +17,7 @@
     "./pills": "./src/components/pills/index.ts",
     "./status-bar": "./src/components/StatusBar.astro",
     "./statusPagesConfig": "./src/utils/statusPagesConfig.ts",
-    "./button": "./src/components/LabButton.astro",
+    "./inputs": "./src/components/inputs/index.ts",
     "./layout": "./src/layouts/index.ts",
     "./nav": "./src/components/nav/index.ts",
     "./package.json": "./package.json"

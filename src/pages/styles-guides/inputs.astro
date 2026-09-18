@@ -1,7 +1,6 @@
 ---
 import StylePages from "../../layouts/StylePages.astro";
-import LabButton from "../../components/LabButton.astro";
-import LabInput from "../../components/LabInput.astro";
+import { LabTextInput, LabButton, LabCheckbox } from "../../components/inputs";
 ---
 
 <StylePages title="Entradas">
@@ -18,30 +17,51 @@ import LabInput from "../../components/LabInput.astro";
     </div>
     <div class="container">
       <h2>Entrada de texto</h2>
-      <LabInput label="Con valor" value="Test value" id="i-v" />
-      <LabInput label="Con placeholder" placeholder="test holder" id="i-ph" />
-      <LabInput label="Sin placeholder" id="i-n-ph" />
-      <LabInput value="Sin label" />
-      <LabInput placeholder="Sin label" />
-      <LabInput />
+      <LabTextInput label="Con valor" value="Test value" />
+      <LabTextInput label="Con placeholder" placeholder="test holder" />
+      <LabTextInput label="Sin placeholder" />
+      <LabTextInput value="Sin label" />
+      <LabTextInput placeholder="Sin label" />
+      <LabTextInput />
+      <LabTextInput value="Deshabilitado" disabled />
       <div class="container">
-        <h3>Tipos de entrada</h3>
-        <LabInput
+        <h3>Otros tipos de entrada de texto</h3>
+        <LabTextInput
           label="Correo"
           placeholder="email@example.com"
           type="email"
-          id="i-e"
         />
-        <LabInput label="Fecha" type="date" id="i-f" />
-        <LabInput label="Mes" type="month" id="i-m" />
-        <LabInput label="Semana" type="week" id="i-w" />
-        <LabInput label="Número" type="number" value="50512" id="i-n" />
-        <LabInput
+        <LabTextInput label="Fecha" type="date" />
+        <LabTextInput label="Mes" type="month" />
+        <LabTextInput label="Semana" type="week" />
+        <LabTextInput label="Número" type="number" value="50512" />
+        <LabTextInput
           label="Contraseña"
           type="password"
           placeholder="Contraseña"
-          id="i-p"
         />
+      </div>
+    </div>
+    <div class="container">
+      <h2>Cajas de verificación y sus variantes</h2>
+      <div class="container checkbox">
+        <h3>Checkboxes con/sin label</h3>
+        <LabCheckbox label="Label up" label_pos="up" />
+        <LabCheckbox label="Label right" label_pos="right" variant="light" />
+        <LabCheckbox label="Label left" label_pos="left" variant="dark" />
+        <LabCheckbox label="Label down" label_pos="down" variant="accent" />
+        <LabCheckbox variant="primary" />
+        <LabCheckbox variant="primary" disabled checked />
+        <LabCheckbox variant="primary" disabled />
+        <LabCheckbox variant="light" />
+        <LabCheckbox variant="light" disabled checked />
+        <LabCheckbox variant="light" disabled />
+        <LabCheckbox variant="dark" />
+        <LabCheckbox variant="dark" disabled checked />
+        <LabCheckbox variant="dark" disabled />
+        <LabCheckbox variant="accent" />
+        <LabCheckbox variant="accent" disabled checked />
+        <LabCheckbox variant="accent" disabled />
       </div>
     </div>
   </div>
@@ -56,6 +76,9 @@ import LabInput from "../../components/LabInput.astro";
     padding-bottom: var(--space-3);
     flex-wrap: wrap;
     align-items: flex-end;
+  }
+  .container.checkbox {
+    align-items: center;
   }
   .wrap {
     display: flex;
