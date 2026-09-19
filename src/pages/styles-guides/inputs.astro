@@ -1,6 +1,11 @@
 ---
 import StylePages from "../../layouts/StylePages.astro";
-import { LabTextInput, LabButton, LabCheckbox } from "../../components/inputs";
+import {
+  LabTextInput,
+  LabButton,
+  LabCheckbox,
+  LabToggle,
+} from "../../components/inputs";
 ---
 
 <StylePages title="Entradas">
@@ -62,6 +67,14 @@ import { LabTextInput, LabButton, LabCheckbox } from "../../components/inputs";
         <LabCheckbox variant="accent" />
         <LabCheckbox variant="accent" disabled checked />
         <LabCheckbox variant="accent" disabled />
+      </div>
+      <div class="container checkbox">
+        <h3>Toggles (checkbox estilizado)</h3>
+        <LabToggle label="Label up" label_pos="up" />
+        <LabToggle label="Label right" label_pos="right" />
+        <LabToggle label="Label left" label_pos="left" variant="accent" />
+        <LabToggle label="Label down" label_pos="down" variant="dark" />
+        <LabToggle disabled checked />
       </div>
     </div>
   </div>

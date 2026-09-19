@@ -6,8 +6,8 @@ Kit de interfaz de usuario de _50512_. Repositorio público para fácil importac
 
 Pequeño intento de _Roadmap_ de pendientes a día de hoy (para que no se me olvide).
 
-- [ ] Input type checkbox.
-- [ ] Input type toggle (variante de checkbox).
+- [x] Input type checkbox.
+- [x] Input type toggle (variante de checkbox).
 - [ ] Textarea
 - [ ] Cartas de selección (parecidos a los botones pero con más espacio).
 - [ ] Footer.

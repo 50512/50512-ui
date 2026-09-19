@@ -16,7 +16,7 @@ interface Props extends HTMLAttributes<"input"> {
   class?: string;
   label?: string;
   label_pos?: LABEL_POS_TYPE;
-  variant?: "primary" | "accent" | "dark" | "light";
+  variant?: "primary" | "accent" | "dark";
 }
 
 const {
@@ -38,13 +38,14 @@ props.id = props.id || crypto.randomUUID();
       </label>
     )
   }
-  <input type="checkbox" class:list={[variant, className]} {...props} />
+  <input type="checkbox" {...props} />
+  <label for={props.id} class:list={["switch", variant, className]}></label>
 </div>
 
 <style>
   .input-container {
     display: inline-flex;
-    gap: var(--space-1);
+    gap: var(--space-2);
     align-items: center;
 
     &.label-up {
@@ -52,72 +53,72 @@ props.id = props.id || crypto.randomUUID();
     }
     &.label-down {
       flex-direction: column-reverse;
-      gap: var(--space-2);
     }
     &.label-left {
       flex-direction: row;
     }
     &.label-right {
       flex-direction: row-reverse;
-      gap: var(--space-2);
+    }
+  }
+
+  .switch {
+    width: var(--space-6);
+    height: var(--space-4);
+    border: 1px solid var(--ink);
+    background: var(--surface-2);
+    position: relative;
+    cursor: pointer;
+    transition: background var(--dur-micro) var(--easing-clinical);
+  }
+
+  .switch::after {
+    content: "";
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: var(--space-3);
+    height: var(--space-3);
+    background: var(--ink);
+    transition:
+      transform var(--dur-micro) var(--easing-clinical),
+      background var(--dur-micro) var(--easing-clinical);
+  }
+
+  input:checked + .switch::after {
+    transform: translateX(var(--space-4));
+  }
+
+  input:checked + .switch {
+    &.primary {
+      background: var(--primary);
+    }
+    &.accent {
+      background: var(--accent);
+    }
+    &.dark {
+      background: var(--ink);
+    }
+
+    &.primary::after,
+    &.dark::after {
+      background: var(--fg-on-blue);
     }
   }
 
   input {
     appearance: none;
-    position: relative;
-    border: var(--border-emphatic);
-    background: var(--surface-1);
-    cursor: pointer;
-    width: var(--space-4);
-    height: var(--space-4);
-    box-shadow: 3px 3px 0 var(--ink);
-    margin: 0;
-
-    transition:
-      transform var(--dur-micro) var(--easing-clinical),
-      box-shadow var(--dur-micro) var(--easing-clinical);
-  }
-  input:checked {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 12px;
-    &.primary,
-    &.dark {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M 8.4470972,15.139122 3.9650315,10.866124 0.79803571,14.381082 8.7813423,22.150381 22.992212,4.6369396 19.187841,1.5737324 Z'/%3E%3C/svg%3E");
-    }
-    &.primary {
-      background-color: var(--primary);
-    }
-    &.dark {
-      background-color: var(--ink);
-    }
-    &.accent,
-    &.light {
-      background-color: var(--accent);
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231a1f24'%3E%3Cpath d='M 8.4470972,15.139122 3.9650315,10.866124 0.79803571,14.381082 8.7813423,22.150381 22.992212,4.6369396 19.187841,1.5737324 Z'/%3E%3C/svg%3E");
-    }
-    &.light {
-      background-color: var(--surface-1);
-    }
-  }
-  input:hover {
-    transform: translate(-1px, -1px);
-    box-shadow: 4px 4px 0 var(--ink);
-  }
-  input:active {
-    transform: translate(1px, 1px);
-    box-shadow: 2px 2px 0 var(--ink);
-  }
-  input:disabled,
-  input:checked:disabled {
-    background-color: var(--surface-2);
-    color: var(--ink-3);
-    border-color: var(--ink-3);
-    pointer-events: none;
-    box-shadow: unset;
+    display: none;
   }
   .input-container:has(input:disabled) label {
     pointer-events: none;
+  }
+  input:disabled + .switch,
+  input:checked:disabled + .switch {
+    background-color: var(--surface-2);
+    border-color: var(--ink-3);
+    &::after {
+      background: var(--ink-3);
+    }
   }
 </style>
