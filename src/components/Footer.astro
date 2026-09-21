@@ -1,0 +1,34 @@
+---
+import "../styles/fonts.css";
+import "../styles/styles.css";
+
+interface Props {
+  footerMarginAuto?: boolean;
+}
+
+const { footerMarginAuto = true } = Astro.props;
+---
+
+<footer class:list={["footer", footerMarginAuto && "margin-footer"]}>
+  <div class="wrap-footer">
+    <slot />
+  </div>
+</footer>
+<style>
+  .margin-footer {
+    margin-top: auto;
+  }
+  .footer {
+    padding: var(--space-6) var(--space-5) var(--space-3);
+    background: var(--ink);
+    color: var(--surface-2);
+  }
+  .wrap-footer {
+    margin: 0 auto;
+    max-width: var(--content-max);
+
+    a {
+      color: var(--brand-blue-700);
+    }
+  }
+</style>

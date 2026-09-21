@@ -3,6 +3,7 @@ import "../styles/fonts.css";
 import "../styles/styles.css";
 import { ClientRouter } from "astro:transitions";
 import StatusBar from "../components/StatusBar.astro";
+import Footer from "../components/Footer.astro";
 import type { AppShellProps } from "./types";
 
 type Props = AppShellProps;
@@ -13,6 +14,7 @@ const {
   barLabel,
   lang = "es-419",
   showStatusBar = true,
+  footerMarginAuto = true,
 } = Astro.props;
 ---
 
@@ -46,11 +48,11 @@ const {
     }
     <slot name="navbar" />
     <slot />
-    <footer class="footer">
-      <div class="wrap-footer">
-        Powered by <a href="/">50512</a>
-      </div>
-    </footer>
+    <Footer {footerMarginAuto}>
+      <slot name="footer">
+        Powered by <a href="https://50512.dev">50512</a>
+      </slot>
+    </Footer>
   </body>
 </html>
 
@@ -59,20 +61,5 @@ const {
     display: flex;
     flex-direction: column;
     min-height: 100svh;
-  }
-
-  .footer {
-    margin-top: auto;
-    padding: var(--space-6) var(--space-5) var(--space-3);
-    background: var(--ink);
-    color: var(--surface-2);
-  }
-  .wrap-footer {
-    margin: 0 auto;
-    max-width: var(--content-max);
-
-    a {
-      color: var(--brand-blue-700);
-    }
   }
 </style>

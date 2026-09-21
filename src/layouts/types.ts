@@ -6,4 +6,5 @@ export interface AppShellProps {
   barLabel?: string;
   lang?: string;
   showStatusBar?: boolean;
+  footerMarginAuto?: boolean;
 }

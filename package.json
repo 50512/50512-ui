@@ -1,7 +1,7 @@
 {
   "name": "@50512/ui",
   "type": "module",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
     "./inputs": "./src/components/inputs/index.ts",
     "./layout": "./src/layouts/index.ts",
     "./nav": "./src/components/nav/index.ts",
+    "./footer": "./src/components/Footer.astro",
     "./package.json": "./package.json"
   },
   "scripts": {
