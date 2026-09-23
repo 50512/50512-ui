@@ -41,28 +41,29 @@ const dotColor = STATUS_COMPONENTS_CONFIG[variant].dot_color;
   <span class="clock status-item" id="clock">UTC --:--:--</span>
 </div>
 
-<script>
-  let clockInterval: number | undefined;
+<script is:inline>
+  (function () {
+    function updateClock() {
+      var utcClock = document.getElementById("clock");
+      if (!utcClock) return;
 
-  function updateClock() {
-    const utcClock = document.getElementById("clock");
-    if (!utcClock) return;
+      function render() {
+        var now = new Date();
+        var hours = String(now.getUTCHours()).padStart(2, "0");
+        var minutes = String(now.getUTCMinutes()).padStart(2, "0");
+        var seconds = String(now.getUTCSeconds()).padStart(2, "0");
 
-    const render = () => {
-      const now = new Date();
-      const hours = String(now.getUTCHours()).padStart(2, "0");
-      const minutes = String(now.getUTCMinutes()).padStart(2, "0");
-      const seconds = String(now.getUTCSeconds()).padStart(2, "0");
+        utcClock.textContent = "UTC " + hours + ":" + minutes + ":" + seconds;
+      }
 
-      utcClock.textContent = `UTC ${hours}:${minutes}:${seconds}`;
-    };
+      render();
+      clearInterval(window.__clockInterval);
+      window.__clockInterval = window.setInterval(render, 1000);
+    }
 
-    render();
-    clearInterval(clockInterval);
-    clockInterval = window.setInterval(render, 1000);
-  }
-
-  document.addEventListener("astro:page-load", updateClock);
+    updateClock();
+    document.addEventListener("astro:page-load", updateClock);
+  })();
 </script>
 
 <style>
