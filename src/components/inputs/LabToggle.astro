@@ -60,6 +60,10 @@ props.id = props.id || crypto.randomUUID();
     &.label-right {
       flex-direction: row-reverse;
     }
+    &.label-right > .label,
+    &.label-left > .label {
+      line-height: unset;
+    }
   }
 
   .switch {
