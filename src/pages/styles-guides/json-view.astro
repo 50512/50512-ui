@@ -1,0 +1,31 @@
+---
+import StylePages from "../../layouts/StylePages.astro";
+import { JsonView } from "../../components/json";
+---
+
+<StylePages title="Visor JSON">
+  <div class="wrap">
+    <h1>Render JSON</h1>
+    <JsonView
+      value={{
+        colores: ["string", 10, true, null],
+        anidados: {
+          anida2: {
+            any2: {
+              array: ["soporta", "multiple", { profundidad: {} }, {}],
+            },
+          },
+        },
+      }}
+    />
+  </div>
+</StylePages>
+<style>
+  .wrap {
+    display: flex;
+    flex-direction: column;
+
+    padding: var(--space-3);
+    background: var(--surface-1);
+  }
+</style>

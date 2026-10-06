@@ -22,6 +22,7 @@
   --success: #3fa34d;
   --caution: var(--brand-orange-500);
   --danger: #e54b4b;
+  --rare: #9929ea;
 
   /* PRIMER PLANO/FONDOS EMPAREJADOS */
   --fg-1: var(--ink);

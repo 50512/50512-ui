@@ -1,0 +1,104 @@
+---
+import "../../styles/fonts.css";
+import "../../styles/styles.css";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {
+  class?: string;
+  value?: unknown; // Solo para JSON en SSR/build, usar `element.data` para client-side.
+  collapse_depth?: number;
+}
+
+const { class: className, value, collapse_depth, ...props } = Astro.props;
+---
+
+<json-view
+  class:list={["json-view", className]}
+  data-json={value === undefined ? undefined : JSON.stringify(value)}
+  data-collapse-depth={collapse_depth}
+  {...props}></json-view>
+
+<script>
+  import "./json-view";
+</script>
+
+<style>
+  .json-view {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: var(--fs-code);
+    line-height: var(--lh-code);
+
+    white-space: pre;
+    overflow-x: auto;
+    background: var(--surface-2);
+    padding: var(--space-2);
+    color: var(--fg-1);
+
+    /* Colores */
+    --json-key: var(--ink);
+    --json-string: #2b7035;
+    --json-number: #c21c1c;
+    --json-boolean: #9117e8;
+    --json-null: #5c646c;
+
+    --json-b0: #006a91;
+    --json-b1: #ac3f00;
+    --json-b2: var(--ink-2);
+  }
+
+  /* Los hijos nacen fuera del scope de Astro, requieren `:global` */
+  .json-view :global(.json-children) {
+    padding-left: 2ch;
+  }
+  .json-view :global(.json-node > summary) {
+    list-style: none;
+    cursor: pointer;
+  }
+  .json-view :global(.json-node > summary::-webkit-details-marker) {
+    display: none;
+  }
+  .json-view :global(.json-node > summary::before) {
+    content: "▾";
+    display: inline-block;
+    width: 2ch;
+    margin-left: -2ch;
+    color: var(--fg-3);
+  }
+  .json-view :global(.json-node:not([open]) > summary::before) {
+    content: "▸";
+  }
+  .json-view :global(.json-node[open] > summary .json-preview) {
+    display: none;
+  }
+  .json-view :global(.json-preview) {
+    color: var(--fg-3);
+  }
+
+  .json-view :global(.json-key) {
+    color: var(--json-key);
+  }
+  .json-view :global(.json-string) {
+    color: var(--json-string);
+  }
+  .json-view :global(.json-number) {
+    color: var(--json-number);
+  }
+  .json-view :global(.json-boolean) {
+    color: var(--json-boolean);
+  }
+  .json-view :global(.json-null) {
+    color: var(--json-null);
+    font-style: italic;
+  }
+
+  .json-view :global(.json-bracket.d0) {
+    color: var(--json-b0);
+  }
+  .json-view :global(.json-bracket.d1) {
+    color: var(--json-b1);
+  }
+  .json-view :global(.json-bracket.d2) {
+    color: var(--json-b2);
+  }
+</style>
