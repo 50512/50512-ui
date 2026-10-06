@@ -9,7 +9,7 @@ interface Props extends HTMLAttributes<"div"> {
   collapse_depth?: number;
 }
 
-const { class: className, value, collapse_depth, ...props } = Astro.props;
+const { class: className, value = {}, collapse_depth, ...props } = Astro.props;
 ---
 
 <json-view

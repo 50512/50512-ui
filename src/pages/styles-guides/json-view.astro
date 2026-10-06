@@ -5,7 +5,10 @@ import { JsonView } from "../../components/json";
 
 <StylePages title="Visor JSON">
   <div class="wrap">
-    <h1>Render JSON</h1>
+    <h1>Visor JSON</h1>
+    <p>
+      Visor de JSON colapsable, con colores por tipo y match de los brackets
+    </p>
     <JsonView
       value={{
         colores: ["string", 10, true, null],
@@ -27,6 +30,9 @@ import { JsonView } from "../../components/json";
         },
       }}
     />
+
+    <p><strong>Vista default:</strong></p>
+    <JsonView />
   </div>
 </StylePages>
 <style>
