@@ -12,7 +12,16 @@ import { JsonView } from "../../components/json";
         anidados: {
           anida2: {
             any2: {
-              array: ["soporta", "multiple", { profundidad: {} }, {}],
+              array: [
+                "soporta",
+                "multiple",
+                {
+                  profundidad: {
+                    long_string: crypto.randomUUID() + crypto.randomUUID(),
+                  },
+                },
+                {},
+              ],
             },
           },
         },
