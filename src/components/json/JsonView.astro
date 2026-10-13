@@ -45,9 +45,36 @@ const { class: className, value = {}, collapse_depth, ...props } = Astro.props;
     background: var(--surface-2);
     padding: var(--space-2);
     color: var(--fg-1);
+  }
 
-    scrollbar-width: thin;
-    scrollbar-color: var(--surface-4) var(--surface-2);
+  @media (hover: hover) and (pointer: fine) {
+    .json-view::-webkit-scrollbar {
+      width: var(--space-1);
+      height: var(--space-1);
+    }
+
+    .json-view::-webkit-scrollbar-track {
+      background: var(--surface-2);
+    }
+
+    /* Handle */
+    .json-view::-webkit-scrollbar-thumb {
+      background: var(--surface-4);
+    }
+  }
+
+  @media not ((hover: hover) and (pointer: fine)) {
+    .json-view {
+      scrollbar-width: thin;
+      scrollbar-color: var(--surface-4) var(--surface-2);
+    }
+  }
+
+  @supports not selector(::-webkit-scrollbar) {
+    .json-view {
+      scrollbar-width: thin;
+      scrollbar-color: var(--surface-4) var(--surface-2);
+    }
   }
 
   /* Los hijos nacen fuera del scope de Astro, requieren `:global` */
