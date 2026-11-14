@@ -36,8 +36,6 @@
   --font-sans: "IBM Plex Sans", system-ui, sans-serif;
   --font-mono:
     "Cascadia Mono", "Cascadia Code", "IBM Plex Mono", ui-monospace, monospace;
-  --font-pixel: "Press Start 2P", "VT323", monospace;
-  --font-crt: "VT323", "Cascadia Mono", "IBM Plex Mono", monospace;
 
   /* --------- TAMAÑOS TIPOGRAFIA (Tamaño|size / Interlineado|line-height / Espaciado entre letras|tracking) --------- */
   --fs-display-xl: 64px;

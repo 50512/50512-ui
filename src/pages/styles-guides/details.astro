@@ -1,0 +1,33 @@
+---
+import StylePages from "../../layouts/StylePages.astro";
+import LabDetails from "../../components/LabDetails.astro";
+---
+
+<StylePages title="Desplegable">
+  <div class="wrap">
+    <h1>Desplegable</h1>
+    <p>
+      Componente desplegable. Wrapper de <span class="code">{"<details>"}</span>
+    </p>
+    <LabDetails title="Título del detalle (summary)">
+      Contenido del detalle. Un <span class="code">{"<p>"}</span>, dedicado
+      (pero no limitado) a contener texto directamente.
+    </LabDetails>
+    <LabDetails title="Múltiples detalles">
+      El borde inferior permite distinguir donde acaba el detalle.
+    </LabDetails>
+    <LabDetails title="Marcador personalizado">
+      Se opta por usar <span class="code">+</span> y <span class="code">-</span> como
+      marcadores de abierto y cerrado.
+    </LabDetails>
+  </div>
+</StylePages>
+<style>
+  .wrap {
+    display: flex;
+    flex-direction: column;
+
+    padding: var(--space-3);
+    background: var(--surface-1);
+  }
+</style>

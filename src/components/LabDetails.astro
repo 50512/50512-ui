@@ -1,0 +1,56 @@
+---
+import "../styles/fonts.css";
+import "../styles/styles.css";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<details>
+  <summary>{title}</summary>
+  <p class="content">
+    <slot />
+  </p>
+</details>
+
+<style>
+  details {
+    padding: var(--space-3) 0;
+    border-bottom: var(--border-soft);
+  }
+
+  summary {
+    list-style: none;
+    cursor: pointer;
+
+    font-weight: bold;
+
+    padding-left: 2ch;
+  }
+
+  p.content {
+    padding: 0 var(--space-2);
+    margin-bottom: 0;
+  }
+
+  summary::before {
+    content: "+";
+    font-size: var(--fs-h3);
+    font-family: var(--font-mono);
+    line-height: 1;
+    display: inline-block;
+    width: 1ch;
+    margin-left: -1ch;
+    margin-right: 0.5ch;
+    color: var(--fg-1);
+  }
+  details[open] > summary::before {
+    content: "-";
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+</style>
