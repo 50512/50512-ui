@@ -9,17 +9,20 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<details>
+<details class="lab-details">
   <summary>{title}</summary>
-  <p class="content">
+  <div class="content">
     <slot />
-  </p>
+  </div>
 </details>
 
 <style>
   details {
     padding: var(--space-3) 0;
     border-bottom: var(--border-soft);
+  }
+  details[open] {
+    padding-bottom: var(--space-2);
   }
 
   summary {
@@ -31,9 +34,8 @@ const { title } = Astro.props;
     padding-left: 2ch;
   }
 
-  p.content {
+  .content {
     padding: 0 var(--space-2);
-    margin-bottom: 0;
   }
 
   summary::before {
