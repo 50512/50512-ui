@@ -33,7 +33,7 @@ function renderNode(
     key === null
       ? []
       : [
-          mkElement("span", "j-key", JSON.stringify(key)),
+          mkElement("span", "json-key", JSON.stringify(key)),
           document.createTextNode(": "),
         ];
 
