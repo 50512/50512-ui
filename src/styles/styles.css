@@ -31,6 +31,30 @@
   --fg-on-blue: #ffffff;
   --fg-on-orange: var(--ink);
 
+  /* CODE TOKENS */
+  --foreground-code: var(--fg-1);
+  --background-code: var(--surface-2);
+  --parameter-code: var(--ink);
+  --string-code: #2b7035;
+  --constant-code: #c21c1c;
+  --keyword-code: #9117e8;
+  --function-code: #006a91;
+  --comment-code: var(--fg-3);
+  --punctuation-code: var(--fg-2);
+
+  /* SHINKI MAPING */
+  --astro-code-foreground: var(--fg-1);
+  --astro-code-background: var(--surface-2);
+  --astro-code-token-string: var(--string-code);
+  --astro-code-token-string-expression: var(--string-code);
+  --astro-code-token-constant: var(--constant-code);
+  --astro-code-token-keyword: var(--keyword-code);
+  --astro-code-token-function: var(--function-code);
+  --astro-code-token-link: var(--function-code);
+  --astro-code-token-parameter: var(--fg-1);
+  --astro-code-token-comment: var(--comment-code);
+  --astro-code-token-punctuation: var(--punctuation-code);
+
   /* --------- TIPOGRAFIA --------- */
   --font-display: "Barlow", system-ui, sans-serif;
   --font-sans: "IBM Plex Sans", system-ui, sans-serif;
@@ -224,6 +248,10 @@ pre,
   font-size: var(--fs-code);
   line-height: var(--lh-code);
   color: var(--ink);
+}
+
+pre.astro-code {
+  padding: var(--space-2);
 }
 
 /* ---------- Utilitarios ---------- */

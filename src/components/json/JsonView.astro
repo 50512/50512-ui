@@ -26,9 +26,9 @@ const { class: className, value = {}, collapse_depth, ...props } = Astro.props;
   .json-view {
     /* Colores */
     --json-key: var(--ink);
-    --json-string: #2b7035;
-    --json-number: #c21c1c;
-    --json-boolean: #9117e8;
+    --json-string: var(--string-code);
+    --json-number: var(--constant-code);
+    --json-boolean: var(--keyword-code);
     --json-null: #5c646c;
 
     --json-b0: #006a91;
